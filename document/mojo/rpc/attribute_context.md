@@ -7,4 +7,4 @@
 | `response` | `mojo.rpc.AttributeContext.Response` |  | 否 |  | Represents a network response, such as an HTTP response. |
 | `resource` | `mojo.rpc.AttributeContext.Resource` |  | 否 |  | Represents a target resource that is involved with a network activity.If multiple resources are involved with an activity, this must be theprimary one. |
 | `api` | `mojo.rpc.AttributeContext.Api` |  | 否 |  | Represents an API operation that is involved to a network activity. |
-| `extensions` | `Array<mojo.core.Any>` |  | 否 |  | Supports extensions for advanced use cases, such as logs and metrics. |
+| `extensions` | `Array<Any>` |  | 否 |  | Supports extensions for advanced use cases, such as logs and metrics. |

@@ -54,51 +54,33 @@ GET /operation/v1/{{service}}/operations
 ### 返回值
 
 #### 返回对象
-| 字段 | 类型 | 说明 |
-|---|---|---|
-|  | `Array<mojo.rpc.longrunning.Operation>` |
+| 类型 | 说明 |
+|---|---|
+| `Array<mojo.rpc.longrunning.Operation>` |
 
 
 #### `mojo.rpc.longrunning.Operation`
 | 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
 |---|---|---|---|---|---|
 | `name` | `string` |  | 否 |  | The server-assigned name, which is only unique within the same service thatoriginally returns it. If you use the default HTTP mapping, the`name` should be a resource name ending with `operations/{unique_id}`. |
-| `metadata` | `mojo.core.Any` |  | 否 |  | Service-specific metadata associated with the operation.  It typicallycontains progress information and common metadata such as create time.Some services might not provide such metadata.  Any method that returns along-running operation should document the metadata type, if any. |
+| `metadata` | `Any` |  | 否 |  | Service-specific metadata associated with the operation.  It typicallycontains progress information and common metadata such as create time.Some services might not provide such metadata.  Any method that returns along-running operation should document the metadata type, if any. |
 | `done` | `boolean` |  | 否 |  | If the value is `false`, it means the operation is still in progress.If `true`, the operation is completed, and either `error` or `response` isavailable. |
-| `result` | `Union<mojo.core.Error,mojo.core.Any>` |  | 否 |  | The operation result, which can be either an `error` or a valid `response`.If `done` == `false`, neither `error` nor `response` is set.If `done` == `true`, exactly one of `error` or `response` is set. |
-
-
-#### `mojo.core.Any`
-| 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
-|---|---|---|---|---|---|
-| `type` | `string` |  | 否 |  |
-| `val` | `string` | `base64` | 否 |  | Must be valid serialized data of the above specified type. |
+| `result` | `Union<Error,Any>` |  | 否 |  | The operation result, which can be either an `error` or a valid `response`.If `done` == `false`, neither `error` nor `response` is set.If `done` == `true`, exactly one of `error` or `response` is set. |
 
 
 #### 
 | 类型 | 说明 |
 |---|---|
-| `mojo.core.Error` |  |
-| `mojo.core.Any` |  |
+| `Error` | Error |
+| `Any` | Any |
 
 
-#### `mojo.core.Error`
+#### `Error`
 | 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
 |---|---|---|---|---|---|
-| `code` | `mojo.core.ErrorCode` |  | 否 |  | The error code |
-| `message` | `string` |  | 否 |  | A developer-facing error message, which should be in English. Anyuser-facing error message should be localized and sent in the[google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client. |
-| `details` | `Array<mojo.core.Any>` |  | 否 |  | A list of messages that carry the error details.  There is a common set ofmessage types for APIs to use. |
-
-
-#### `mojo.core.ErrorCode`
-| 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
-|---|---|---|---|---|---|
-| `val` | `integer` | `int32` | 是 |  |  |
-| `name` | `string` |  | 否 |  | The name of the error code. This is a constant value that identifies theerror code. Error code name are unique within a particulardomain of errors. This should be at most 63 characters and match/[A-Z0-9_]+/. |
-| `domain` | `string` |  | 否 |  | system, runtime, ... |
-| `description` | `string` |  | 否 |  | a detail description for the code |
-| `document` | `string` | `url` | 否 |  | the api document url for this error code |
-| `httpStatusCode` | `integer` | `int32` | 否 |  | the http status code, which is error code mapping to |
+| `code` | `string` | `ErrorCode` | 否 |  |
+| `message` | `string` |  | 否 |  | A developer-facing error message, which should be in English. |
+| `details` | `Array<Any>` |  | 否 |  | A list of messages that carry the error details.  There is a common set of message types for APIs to use. |
 
 
 ## Gets the latest state of a long-running operation.  Clients can use thismethod to poll the operation result at intervals as recommended by the APIservice.
@@ -123,42 +105,24 @@ GET /operation/v1/{{service}}/operations/{name}
 | 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
 |---|---|---|---|---|---|
 | `name` | `string` |  | 否 |  | The server-assigned name, which is only unique within the same service thatoriginally returns it. If you use the default HTTP mapping, the`name` should be a resource name ending with `operations/{unique_id}`. |
-| `metadata` | `mojo.core.Any` |  | 否 |  | Service-specific metadata associated with the operation.  It typicallycontains progress information and common metadata such as create time.Some services might not provide such metadata.  Any method that returns along-running operation should document the metadata type, if any. |
+| `metadata` | `Any` |  | 否 |  | Service-specific metadata associated with the operation.  It typicallycontains progress information and common metadata such as create time.Some services might not provide such metadata.  Any method that returns along-running operation should document the metadata type, if any. |
 | `done` | `boolean` |  | 否 |  | If the value is `false`, it means the operation is still in progress.If `true`, the operation is completed, and either `error` or `response` isavailable. |
-| `result` | `Union<mojo.core.Error,mojo.core.Any>` |  | 否 |  | The operation result, which can be either an `error` or a valid `response`.If `done` == `false`, neither `error` nor `response` is set.If `done` == `true`, exactly one of `error` or `response` is set. |
-
-
-#### `mojo.core.Any`
-| 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
-|---|---|---|---|---|---|
-| `type` | `string` |  | 否 |  |
-| `val` | `string` | `base64` | 否 |  | Must be valid serialized data of the above specified type. |
+| `result` | `Union<Error,Any>` |  | 否 |  | The operation result, which can be either an `error` or a valid `response`.If `done` == `false`, neither `error` nor `response` is set.If `done` == `true`, exactly one of `error` or `response` is set. |
 
 
 #### 
 | 类型 | 说明 |
 |---|---|
-| `mojo.core.Error` |  |
-| `mojo.core.Any` |  |
+| `Error` | Error |
+| `Any` | Any |
 
 
-#### `mojo.core.Error`
+#### `Error`
 | 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
 |---|---|---|---|---|---|
-| `code` | `mojo.core.ErrorCode` |  | 否 |  | The error code |
-| `message` | `string` |  | 否 |  | A developer-facing error message, which should be in English. Anyuser-facing error message should be localized and sent in the[google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client. |
-| `details` | `Array<mojo.core.Any>` |  | 否 |  | A list of messages that carry the error details.  There is a common set ofmessage types for APIs to use. |
-
-
-#### `mojo.core.ErrorCode`
-| 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
-|---|---|---|---|---|---|
-| `val` | `integer` | `int32` | 是 |  |  |
-| `name` | `string` |  | 否 |  | The name of the error code. This is a constant value that identifies theerror code. Error code name are unique within a particulardomain of errors. This should be at most 63 characters and match/[A-Z0-9_]+/. |
-| `domain` | `string` |  | 否 |  | system, runtime, ... |
-| `description` | `string` |  | 否 |  | a detail description for the code |
-| `document` | `string` | `url` | 否 |  | the api document url for this error code |
-| `httpStatusCode` | `integer` | `int32` | 否 |  | the http status code, which is error code mapping to |
+| `code` | `string` | `ErrorCode` | 否 |  |
+| `message` | `string` |  | 否 |  | A developer-facing error message, which should be in English. |
+| `details` | `Array<Any>` |  | 否 |  | A list of messages that carry the error details.  There is a common set of message types for APIs to use. |
 
 
 ## Deletes a long-running operation. This method indicates that the client isno longer interested in the operation result. It does not cancel theoperation. If the server doesn't support this method, it returns`google.rpc.Code.UNIMPLEMENTED`.
@@ -233,39 +197,21 @@ If RPC context deadline is also specified, the shorter one will be used. |
 | 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
 |---|---|---|---|---|---|
 | `name` | `string` |  | 否 |  | The server-assigned name, which is only unique within the same service thatoriginally returns it. If you use the default HTTP mapping, the`name` should be a resource name ending with `operations/{unique_id}`. |
-| `metadata` | `mojo.core.Any` |  | 否 |  | Service-specific metadata associated with the operation.  It typicallycontains progress information and common metadata such as create time.Some services might not provide such metadata.  Any method that returns along-running operation should document the metadata type, if any. |
+| `metadata` | `Any` |  | 否 |  | Service-specific metadata associated with the operation.  It typicallycontains progress information and common metadata such as create time.Some services might not provide such metadata.  Any method that returns along-running operation should document the metadata type, if any. |
 | `done` | `boolean` |  | 否 |  | If the value is `false`, it means the operation is still in progress.If `true`, the operation is completed, and either `error` or `response` isavailable. |
-| `result` | `Union<mojo.core.Error,mojo.core.Any>` |  | 否 |  | The operation result, which can be either an `error` or a valid `response`.If `done` == `false`, neither `error` nor `response` is set.If `done` == `true`, exactly one of `error` or `response` is set. |
-
-
-#### `mojo.core.Any`
-| 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
-|---|---|---|---|---|---|
-| `type` | `string` |  | 否 |  |
-| `val` | `string` | `base64` | 否 |  | Must be valid serialized data of the above specified type. |
+| `result` | `Union<Error,Any>` |  | 否 |  | The operation result, which can be either an `error` or a valid `response`.If `done` == `false`, neither `error` nor `response` is set.If `done` == `true`, exactly one of `error` or `response` is set. |
 
 
 #### 
 | 类型 | 说明 |
 |---|---|
-| `mojo.core.Error` |  |
-| `mojo.core.Any` |  |
+| `Error` | Error |
+| `Any` | Any |
 
 
-#### `mojo.core.Error`
+#### `Error`
 | 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
 |---|---|---|---|---|---|
-| `code` | `mojo.core.ErrorCode` |  | 否 |  | The error code |
-| `message` | `string` |  | 否 |  | A developer-facing error message, which should be in English. Anyuser-facing error message should be localized and sent in the[google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client. |
-| `details` | `Array<mojo.core.Any>` |  | 否 |  | A list of messages that carry the error details.  There is a common set ofmessage types for APIs to use. |
-
-
-#### `mojo.core.ErrorCode`
-| 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
-|---|---|---|---|---|---|
-| `val` | `integer` | `int32` | 是 |  |  |
-| `name` | `string` |  | 否 |  | The name of the error code. This is a constant value that identifies theerror code. Error code name are unique within a particulardomain of errors. This should be at most 63 characters and match/[A-Z0-9_]+/. |
-| `domain` | `string` |  | 否 |  | system, runtime, ... |
-| `description` | `string` |  | 否 |  | a detail description for the code |
-| `document` | `string` | `url` | 否 |  | the api document url for this error code |
-| `httpStatusCode` | `integer` | `int32` | 否 |  | the http status code, which is error code mapping to |
+| `code` | `string` | `ErrorCode` | 否 |  |
+| `message` | `string` |  | 否 |  | A developer-facing error message, which should be in English. |
+| `details` | `Array<Any>` |  | 否 |  | A list of messages that carry the error details.  There is a common set of message types for APIs to use. |

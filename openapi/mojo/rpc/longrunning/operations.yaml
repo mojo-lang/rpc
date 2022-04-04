@@ -1,102 +1,5 @@
 components:
   schemas:
-    mojo.core.Any:
-      description: |
-        Any Object
-
-        `Any` contains an arbitrary serialized message along with a URL that describes the type of the serialized message.
-      properties:
-        type:
-          type: string
-        val:
-          description: Must be valid serialized data of the above specified type.
-          format: base64
-          type: string
-      title: mojo.core.Any
-      type: object
-    mojo.core.Error:
-      description: |
-        @lang('zh-CN')
-      properties:
-        code:
-          $ref: '#/components/schemas/mojo.core.ErrorCode'
-        details:
-          description: |-
-            A list of messages that carry the error details.  There is a common set of
-            message types for APIs to use.
-          items:
-            $ref: '#/components/schemas/mojo.core.Any'
-          type: array
-        message:
-          description: |-
-            A developer-facing error message, which should be in English. Any
-            user-facing error message should be localized and sent in the
-            [google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client.
-          type: string
-      title: mojo.core.Error
-      type: object
-    mojo.core.ErrorCode:
-      description: |-
-        Error
-
-        ErrorCode is usually static and predefined in a specific domain
-        "system.121"
-        "system.NotSupport"
-        code `[100..599]` is reserved by duplicated with http status code
-        code `0` is also reserved because of it usually has success meaning
-      properties:
-        description:
-          description: a detail description for the code
-          type: string
-        document:
-          description: the api document url for this error code
-          format: url
-          type: string
-        domain:
-          description: system, runtime, ...
-          type: string
-        httpStatusCode:
-          description: the http status code, which is error code mapping to
-          format: int32
-          type: integer
-        name:
-          description: |-
-            The name of the error code. This is a constant value that identifies the
-            error code. Error code name are unique within a particular
-            domain of errors. This should be at most 63 characters and match
-            /[A-Z0-9_]+/.
-          type: string
-        val:
-          description: ""
-          format: int32
-          type: integer
-      required:
-      - val
-      title: mojo.core.ErrorCode
-      type: object
-    mojo.core.Object:
-      additionalProperties:
-        $ref: '#/components/schemas/mojo.core.Value'
-      description: Object type
-      title: mojo.core.Object
-      type: object
-    mojo.core.Value:
-      oneOf:
-      - $ref: '#/components/schemas/mojo.core.Values'
-      - $ref: '#/components/schemas/mojo.core.Object'
-      - type: boolean
-      - format: int64
-        type: integer
-      - format: float64
-        type: number
-      - type: string
-      title: mojo.core.Value
-    mojo.core.Values:
-      description: Values type
-      items:
-        $ref: '#/components/schemas/mojo.core.Value'
-      title: mojo.core.Values
-      type: array
     mojo.rpc.AttributeContext:
       description: |-
         An attribute is a piece of metadata that describes an activity on a network
@@ -123,7 +26,8 @@ components:
           description: Supports extensions for advanced use cases, such as logs and
             metrics.
           items:
-            $ref: '#/components/schemas/mojo.core.Any'
+            title: Any
+            type: object
           type: array
         origin:
           $ref: '#/components/schemas/mojo.rpc.AttributeContext.Peer'
@@ -205,7 +109,24 @@ components:
             type: string
           type: array
         claims:
-          $ref: '#/components/schemas/mojo.core.Object'
+          description: |-
+            Structured claims presented with the credential. JWTs include
+            `{key: value}` pairs for standard and private claims. The following
+            is a subset of the standard required and optional claims that would
+            typically be presented for a Google-based JWT:
+
+               {'iss': 'accounts.google.com',
+                'sub': '113289723416554971153',
+                'aud': ['123456789012', 'pubsub.googleapis.com'],
+                'azp': '123456789012.apps.googleusercontent.com',
+                'email': 'jsmith@example.com',
+                'iat': 1353601026,
+                'exp': 1353604926}
+
+            SAML assertions are similarly specified, but with an identity provider
+            dependent structure.
+          title: object
+          type: object
         presenter:
           description: |-
             The authorized presenter of the credential. Reflects the optional
@@ -316,6 +237,7 @@ components:
             The timestamp when the `destination` service receives the last byte of
             the request.
           format: DateTime
+          title: DateTime
           type: string
       title: mojo.rpc.AttributeContext.Request
       type: object
@@ -340,12 +262,14 @@ components:
             Output only. The timestamp when the resource was created. This may
             be either the time creation was initiated or when it was completed.
           format: DateTime
+          title: DateTime
           type: string
         deleteTime:
           description: |-
             Output only. The timestamp when the resource was deleted.
             If the resource is not deleted, this must be empty.
           format: DateTime
+          title: DateTime
           type: string
         displayName:
           description: Mutable. The display name set by clients. Must be <= 63 characters.
@@ -416,6 +340,7 @@ components:
             change to the resource made by users must refresh this value.
             Changes to a resource made by the service should refresh this value.
           format: DateTime
+          title: DateTime
           type: string
       title: mojo.rpc.AttributeContext.Resource
       type: object
@@ -431,6 +356,7 @@ components:
             request to the backend until when the destination service receives the
             complete response from the backend.
           format: Duration
+          title: Duration
           type: string
         code:
           description: The HTTP response status code, such as `200` and `404`.
@@ -453,6 +379,7 @@ components:
             The timestamp when the `destination` service sends the last byte of
             the response.
           format: DateTime
+          title: DateTime
           type: string
       title: mojo.rpc.AttributeContext.Response
       type: object
@@ -471,7 +398,13 @@ components:
             available.
           type: boolean
         metadata:
-          $ref: '#/components/schemas/mojo.core.Any'
+          description: |-
+            Service-specific metadata associated with the operation.  It typically
+            contains progress information and common metadata such as create time.
+            Some services might not provide such metadata.  Any method that returns a
+            long-running operation should document the metadata type, if any.
+          title: Any
+          type: object
         name:
           description: |-
             The server-assigned name, which is only unique within the same service that
@@ -484,8 +417,33 @@ components:
             If `done` == `false`, neither `error` nor `response` is set.
             If `done` == `true`, exactly one of `error` or `response` is set.
           oneOf:
-          - $ref: '#/components/schemas/mojo.core.Error'
-          - $ref: '#/components/schemas/mojo.core.Any'
+          - oneOf:
+            - type: "null"
+            - type: boolean
+            - type: number
+            - type: string
+            - type: array
+            - type: object
+            properties:
+              code:
+                format: ErrorCode
+                title: ErrorCode
+                type: string
+              details:
+                description: A list of messages that carry the error details.  There
+                  is a common set of message types for APIs to use.
+                items:
+                  title: Any
+                  type: object
+                type: array
+              message:
+                description: A developer-facing error message, which should be in
+                  English.
+                type: string
+            title: Error
+            type: object
+          - title: Any
+            type: object
       title: mojo.rpc.longrunning.Operation
       type: object
 info:
@@ -621,6 +579,7 @@ paths:
         name: timeout
         schema:
           format: Duration
+          title: Duration
           type: string
       responses:
         "200":

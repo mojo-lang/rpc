@@ -2,20 +2,20 @@ package longrunning
 
 import "github.com/mojo-lang/core/go/pkg/mojo/core"
 
-func (m *Operation) GetError() *core.Error {
-    return m.GetMojoCoreError()
+func (x *Operation) GetError() *core.Error {
+    return x.GetMojoCoreError()
 }
 
-func (m *Operation) GetValue() *core.Any {
-    return m.GetMojoCoreAny()
+func (x *Operation) GetValue() *core.Any {
+    return x.GetMojoCoreAny()
 }
 
-func (m *Operation) SetError(err *core.Error) *Operation {
-    m.Result = &Operation_MojoCoreError{MojoCoreError: err}
-    return m
+func (x *Operation) SetError(err *core.Error) *Operation {
+    x.Result = &Operation_MojoCoreError{MojoCoreError: err}
+    return x
 }
 
-func (m *Operation) SetValue(any *core.Any) *Operation {
-    m.Result = &Operation_MojoCoreAny{MojoCoreAny: any}
-    return m
+func (x *Operation) SetValue(any *core.Any) *Operation {
+    x.Result = &Operation_MojoCoreAny{MojoCoreAny: any}
+    return x
 }
