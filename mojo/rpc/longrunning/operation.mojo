@@ -21,7 +21,7 @@ type Operation {
   /// The server-assigned name, which is only unique within the same service that
   /// originally returns it. If you use the default HTTP mapping, the
   /// `name` should be a resource name ending with `operations/{unique_id}`.
-  name: String @1
+  name: String @1 @key
 
   /// Service-specific metadata associated with the operation.  It typically
   /// contains progress information and common metadata such as create time.

@@ -55,40 +55,42 @@ public final class OperationsProto {
     java.lang.String[] descriptorData = {
       "\n%mojo/rpc/longrunning/operations.proto\022" +
       "\024mojo.rpc.longrunning\032\024mojo/core/null.pr" +
-      "oto\032\024mojo/core/time.proto\032$mojo/rpc/long" +
-      "running/operation.proto\"o\n\025ListOperation" +
-      "sRequest\022\016\n\006parent\030\001 \001(\t\022\016\n\006filter\030\004 \001(\t" +
-      "\022\022\n\tpage_size\030\320\017 \001(\005\022\023\n\npage_token\030\321\017 \001(" +
-      "\t\022\r\n\004skip\030\322\017 \001(\005\"}\n\026ListOperationsRespon" +
-      "se\0223\n\noperations\030\001 \003(\0132\037.mojo.rpc.longru" +
-      "nning.Operation\022\024\n\013total_count\030\320\017 \001(\005\022\030\n" +
-      "\017next_page_token\030\321\017 \001(\t\"#\n\023GetOperationR" +
-      "equest\022\014\n\004name\030\001 \001(\t\"&\n\026DeleteOperationR" +
-      "equest\022\014\n\004name\030\001 \001(\t\"&\n\026CancelOperationR" +
-      "equest\022\014\n\004name\030\001 \001(\t\"J\n\024WaitOperationReq" +
-      "uest\022\014\n\004name\030\001 \001(\t\022$\n\007timeout\030\002 \001(\0132\023.mo" +
-      "jo.core.Duration2\334\003\n\nOperations\022l\n\017list_" +
-      "operations\022+.mojo.rpc.longrunning.ListOp" +
-      "erationsRequest\032,.mojo.rpc.longrunning.L" +
-      "istOperationsResponse\022[\n\rget_operation\022)" +
-      ".mojo.rpc.longrunning.GetOperationReques" +
-      "t\032\037.mojo.rpc.longrunning.Operation\022Q\n\020de" +
-      "lete_operation\022,.mojo.rpc.longrunning.De" +
-      "leteOperationRequest\032\017.mojo.core.Null\022Q\n" +
-      "\020cancel_operation\022,.mojo.rpc.longrunning" +
-      ".CancelOperationRequest\032\017.mojo.core.Null" +
-      "\022]\n\016wait_operation\022*.mojo.rpc.longrunnin" +
-      "g.WaitOperationRequest\032\037.mojo.rpc.longru" +
-      "nning.OperationBy\n\"org.mojo-lang.mojo.rp" +
-      "c.longrunningB\017OperationsProtoP\001Z@github" +
-      ".com/mojo-lang/rpc/go/pkg/mojo/rpc/longr" +
-      "unning;longrunningb\006proto3"
+      "oto\032\024mojo/core/time.proto\032\017mojo/mojo.pro" +
+      "to\032$mojo/rpc/longrunning/operation.proto" +
+      "\"o\n\025ListOperationsRequest\022\016\n\006parent\030\001 \001(" +
+      "\t\022\016\n\006filter\030\004 \001(\t\022\022\n\tpage_size\030\320\017 \001(\005\022\023\n" +
+      "\npage_token\030\321\017 \001(\t\022\r\n\004skip\030\322\017 \001(\005\"}\n\026Lis" +
+      "tOperationsResponse\0223\n\noperations\030\001 \003(\0132" +
+      "\037.mojo.rpc.longrunning.Operation\022\024\n\013tota" +
+      "l_count\030\320\017 \001(\005\022\030\n\017next_page_token\030\321\017 \001(\t" +
+      "\"#\n\023GetOperationRequest\022\014\n\004name\030\001 \001(\t\"&\n" +
+      "\026DeleteOperationRequest\022\014\n\004name\030\001 \001(\t\"&\n" +
+      "\026CancelOperationRequest\022\014\n\004name\030\001 \001(\t\"J\n" +
+      "\024WaitOperationRequest\022\014\n\004name\030\001 \001(\t\022$\n\007t" +
+      "imeout\030\002 \001(\0132\023.mojo.core.Duration2\334\003\n\nOp" +
+      "erations\022l\n\017list_operations\022+.mojo.rpc.l" +
+      "ongrunning.ListOperationsRequest\032,.mojo." +
+      "rpc.longrunning.ListOperationsResponse\022[" +
+      "\n\rget_operation\022).mojo.rpc.longrunning.G" +
+      "etOperationRequest\032\037.mojo.rpc.longrunnin" +
+      "g.Operation\022Q\n\020delete_operation\022,.mojo.r" +
+      "pc.longrunning.DeleteOperationRequest\032\017." +
+      "mojo.core.Null\022Q\n\020cancel_operation\022,.moj" +
+      "o.rpc.longrunning.CancelOperationRequest" +
+      "\032\017.mojo.core.Null\022]\n\016wait_operation\022*.mo" +
+      "jo.rpc.longrunning.WaitOperationRequest\032" +
+      "\037.mojo.rpc.longrunning.OperationBy\n\"org." +
+      "mojo-lang.mojo.rpc.longrunningB\017Operatio" +
+      "nsProtoP\001Z@github.com/mojo-lang/rpc/go/p" +
+      "kg/mojo/rpc/longrunning;longrunningb\006pro" +
+      "to3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           org.mojolang.mojo.core.NullProto.getDescriptor(),
           org.mojolang.mojo.core.TimeProto.getDescriptor(),
+          com.google.protobuf.MojoProtos.getDescriptor(),
           org.mojo-lang.mojo.rpc.longrunning.OperationProto.getDescriptor(),
         });
     internal_static_mojo_rpc_longrunning_ListOperationsRequest_descriptor =
@@ -129,6 +131,7 @@ public final class OperationsProto {
         new java.lang.String[] { "Name", "Timeout", });
     org.mojolang.mojo.core.NullProto.getDescriptor();
     org.mojolang.mojo.core.TimeProto.getDescriptor();
+    com.google.protobuf.MojoProtos.getDescriptor();
     org.mojo-lang.mojo.rpc.longrunning.OperationProto.getDescriptor();
   }
 

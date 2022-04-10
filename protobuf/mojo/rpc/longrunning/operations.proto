@@ -6,6 +6,7 @@ package mojo.rpc.longrunning;
 
 import "mojo/core/null.proto";
 import "mojo/core/time.proto";
+import "mojo/mojo.proto";
 import "mojo/rpc/longrunning/operation.proto";
 
 option go_package = "github.com/mojo-lang/rpc/go/pkg/mojo/rpc/longrunning;longrunning";
