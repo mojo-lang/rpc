@@ -16,8 +16,6 @@ message Operation {
     string name = 1;
     mojo.core.Any metadata = 2;
     bool done = 3;
-    oneof result {
-        mojo.core.Error mojo_core_error = 4;
-        mojo.core.Any mojo_core_any = 5;
-    }
+    mojo.core.Error error = 4;
+    mojo.core.Any response = 5;
 }

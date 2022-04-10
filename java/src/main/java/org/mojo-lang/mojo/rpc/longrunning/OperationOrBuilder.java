@@ -41,34 +41,32 @@ public interface OperationOrBuilder extends
   boolean getDone();
 
   /**
-   * <code>.mojo.core.Error mojo_core_error = 4;</code>
-   * @return Whether the mojoCoreError field is set.
+   * <code>.mojo.core.Error error = 4;</code>
+   * @return Whether the error field is set.
    */
-  boolean hasMojoCoreError();
+  boolean hasError();
   /**
-   * <code>.mojo.core.Error mojo_core_error = 4;</code>
-   * @return The mojoCoreError.
+   * <code>.mojo.core.Error error = 4;</code>
+   * @return The error.
    */
-  org.mojolang.mojo.core.Error getMojoCoreError();
+  org.mojolang.mojo.core.Error getError();
   /**
-   * <code>.mojo.core.Error mojo_core_error = 4;</code>
+   * <code>.mojo.core.Error error = 4;</code>
    */
-  org.mojolang.mojo.core.ErrorOrBuilder getMojoCoreErrorOrBuilder();
+  org.mojolang.mojo.core.ErrorOrBuilder getErrorOrBuilder();
 
   /**
-   * <code>.mojo.core.Any mojo_core_any = 5;</code>
-   * @return Whether the mojoCoreAny field is set.
+   * <code>.mojo.core.Any response = 5;</code>
+   * @return Whether the response field is set.
    */
-  boolean hasMojoCoreAny();
+  boolean hasResponse();
   /**
-   * <code>.mojo.core.Any mojo_core_any = 5;</code>
-   * @return The mojoCoreAny.
+   * <code>.mojo.core.Any response = 5;</code>
+   * @return The response.
    */
-  org.mojolang.mojo.core.Any getMojoCoreAny();
+  org.mojolang.mojo.core.Any getResponse();
   /**
-   * <code>.mojo.core.Any mojo_core_any = 5;</code>
+   * <code>.mojo.core.Any response = 5;</code>
    */
-  org.mojolang.mojo.core.AnyOrBuilder getMojoCoreAnyOrBuilder();
-
-  public org.mojo-lang.mojo.rpc.longrunning.Operation.ResultCase getResultCase();
+  org.mojolang.mojo.core.AnyOrBuilder getResponseOrBuilder();
 }

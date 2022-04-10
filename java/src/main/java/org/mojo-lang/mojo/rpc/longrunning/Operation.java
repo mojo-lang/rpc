@@ -75,30 +75,28 @@ private static final long serialVersionUID = 0L;
           }
           case 34: {
             org.mojolang.mojo.core.Error.Builder subBuilder = null;
-            if (resultCase_ == 4) {
-              subBuilder = ((org.mojolang.mojo.core.Error) result_).toBuilder();
+            if (error_ != null) {
+              subBuilder = error_.toBuilder();
             }
-            result_ =
-                input.readMessage(org.mojolang.mojo.core.Error.parser(), extensionRegistry);
+            error_ = input.readMessage(org.mojolang.mojo.core.Error.parser(), extensionRegistry);
             if (subBuilder != null) {
-              subBuilder.mergeFrom((org.mojolang.mojo.core.Error) result_);
-              result_ = subBuilder.buildPartial();
+              subBuilder.mergeFrom(error_);
+              error_ = subBuilder.buildPartial();
             }
-            resultCase_ = 4;
+
             break;
           }
           case 42: {
             org.mojolang.mojo.core.Any.Builder subBuilder = null;
-            if (resultCase_ == 5) {
-              subBuilder = ((org.mojolang.mojo.core.Any) result_).toBuilder();
+            if (response_ != null) {
+              subBuilder = response_.toBuilder();
             }
-            result_ =
-                input.readMessage(org.mojolang.mojo.core.Any.parser(), extensionRegistry);
+            response_ = input.readMessage(org.mojolang.mojo.core.Any.parser(), extensionRegistry);
             if (subBuilder != null) {
-              subBuilder.mergeFrom((org.mojolang.mojo.core.Any) result_);
-              result_ = subBuilder.buildPartial();
+              subBuilder.mergeFrom(response_);
+              response_ = subBuilder.buildPartial();
             }
-            resultCase_ = 5;
+
             break;
           }
           default: {
@@ -131,47 +129,6 @@ private static final long serialVersionUID = 0L;
     return org.mojo-lang.mojo.rpc.longrunning.OperationProto.internal_static_mojo_rpc_longrunning_Operation_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             org.mojo-lang.mojo.rpc.longrunning.Operation.class, org.mojo-lang.mojo.rpc.longrunning.Operation.Builder.class);
-  }
-
-  private int resultCase_ = 0;
-  private java.lang.Object result_;
-  public enum ResultCase
-      implements com.google.protobuf.Internal.EnumLite,
-          com.google.protobuf.AbstractMessage.InternalOneOfEnum {
-    MOJO_CORE_ERROR(4),
-    MOJO_CORE_ANY(5),
-    RESULT_NOT_SET(0);
-    private final int value;
-    private ResultCase(int value) {
-      this.value = value;
-    }
-    /**
-     * @param value The number of the enum to look for.
-     * @return The enum associated with the given number.
-     * @deprecated Use {@link #forNumber(int)} instead.
-     */
-    @java.lang.Deprecated
-    public static ResultCase valueOf(int value) {
-      return forNumber(value);
-    }
-
-    public static ResultCase forNumber(int value) {
-      switch (value) {
-        case 4: return MOJO_CORE_ERROR;
-        case 5: return MOJO_CORE_ANY;
-        case 0: return RESULT_NOT_SET;
-        default: return null;
-      }
-    }
-    public int getNumber() {
-      return this.value;
-    }
-  };
-
-  public ResultCase
-  getResultCase() {
-    return ResultCase.forNumber(
-        resultCase_);
   }
 
   public static final int NAME_FIELD_NUMBER = 1;
@@ -249,66 +206,56 @@ private static final long serialVersionUID = 0L;
     return done_;
   }
 
-  public static final int MOJO_CORE_ERROR_FIELD_NUMBER = 4;
+  public static final int ERROR_FIELD_NUMBER = 4;
+  private org.mojolang.mojo.core.Error error_;
   /**
-   * <code>.mojo.core.Error mojo_core_error = 4;</code>
-   * @return Whether the mojoCoreError field is set.
+   * <code>.mojo.core.Error error = 4;</code>
+   * @return Whether the error field is set.
    */
   @java.lang.Override
-  public boolean hasMojoCoreError() {
-    return resultCase_ == 4;
+  public boolean hasError() {
+    return error_ != null;
   }
   /**
-   * <code>.mojo.core.Error mojo_core_error = 4;</code>
-   * @return The mojoCoreError.
+   * <code>.mojo.core.Error error = 4;</code>
+   * @return The error.
    */
   @java.lang.Override
-  public org.mojolang.mojo.core.Error getMojoCoreError() {
-    if (resultCase_ == 4) {
-       return (org.mojolang.mojo.core.Error) result_;
-    }
-    return org.mojolang.mojo.core.Error.getDefaultInstance();
+  public org.mojolang.mojo.core.Error getError() {
+    return error_ == null ? org.mojolang.mojo.core.Error.getDefaultInstance() : error_;
   }
   /**
-   * <code>.mojo.core.Error mojo_core_error = 4;</code>
+   * <code>.mojo.core.Error error = 4;</code>
    */
   @java.lang.Override
-  public org.mojolang.mojo.core.ErrorOrBuilder getMojoCoreErrorOrBuilder() {
-    if (resultCase_ == 4) {
-       return (org.mojolang.mojo.core.Error) result_;
-    }
-    return org.mojolang.mojo.core.Error.getDefaultInstance();
+  public org.mojolang.mojo.core.ErrorOrBuilder getErrorOrBuilder() {
+    return getError();
   }
 
-  public static final int MOJO_CORE_ANY_FIELD_NUMBER = 5;
+  public static final int RESPONSE_FIELD_NUMBER = 5;
+  private org.mojolang.mojo.core.Any response_;
   /**
-   * <code>.mojo.core.Any mojo_core_any = 5;</code>
-   * @return Whether the mojoCoreAny field is set.
+   * <code>.mojo.core.Any response = 5;</code>
+   * @return Whether the response field is set.
    */
   @java.lang.Override
-  public boolean hasMojoCoreAny() {
-    return resultCase_ == 5;
+  public boolean hasResponse() {
+    return response_ != null;
   }
   /**
-   * <code>.mojo.core.Any mojo_core_any = 5;</code>
-   * @return The mojoCoreAny.
+   * <code>.mojo.core.Any response = 5;</code>
+   * @return The response.
    */
   @java.lang.Override
-  public org.mojolang.mojo.core.Any getMojoCoreAny() {
-    if (resultCase_ == 5) {
-       return (org.mojolang.mojo.core.Any) result_;
-    }
-    return org.mojolang.mojo.core.Any.getDefaultInstance();
+  public org.mojolang.mojo.core.Any getResponse() {
+    return response_ == null ? org.mojolang.mojo.core.Any.getDefaultInstance() : response_;
   }
   /**
-   * <code>.mojo.core.Any mojo_core_any = 5;</code>
+   * <code>.mojo.core.Any response = 5;</code>
    */
   @java.lang.Override
-  public org.mojolang.mojo.core.AnyOrBuilder getMojoCoreAnyOrBuilder() {
-    if (resultCase_ == 5) {
-       return (org.mojolang.mojo.core.Any) result_;
-    }
-    return org.mojolang.mojo.core.Any.getDefaultInstance();
+  public org.mojolang.mojo.core.AnyOrBuilder getResponseOrBuilder() {
+    return getResponse();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -334,11 +281,11 @@ private static final long serialVersionUID = 0L;
     if (done_ != false) {
       output.writeBool(3, done_);
     }
-    if (resultCase_ == 4) {
-      output.writeMessage(4, (org.mojolang.mojo.core.Error) result_);
+    if (error_ != null) {
+      output.writeMessage(4, getError());
     }
-    if (resultCase_ == 5) {
-      output.writeMessage(5, (org.mojolang.mojo.core.Any) result_);
+    if (response_ != null) {
+      output.writeMessage(5, getResponse());
     }
     unknownFields.writeTo(output);
   }
@@ -360,13 +307,13 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(3, done_);
     }
-    if (resultCase_ == 4) {
+    if (error_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, (org.mojolang.mojo.core.Error) result_);
+        .computeMessageSize(4, getError());
     }
-    if (resultCase_ == 5) {
+    if (response_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(5, (org.mojolang.mojo.core.Any) result_);
+        .computeMessageSize(5, getResponse());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -392,18 +339,15 @@ private static final long serialVersionUID = 0L;
     }
     if (getDone()
         != other.getDone()) return false;
-    if (!getResultCase().equals(other.getResultCase())) return false;
-    switch (resultCase_) {
-      case 4:
-        if (!getMojoCoreError()
-            .equals(other.getMojoCoreError())) return false;
-        break;
-      case 5:
-        if (!getMojoCoreAny()
-            .equals(other.getMojoCoreAny())) return false;
-        break;
-      case 0:
-      default:
+    if (hasError() != other.hasError()) return false;
+    if (hasError()) {
+      if (!getError()
+          .equals(other.getError())) return false;
+    }
+    if (hasResponse() != other.hasResponse()) return false;
+    if (hasResponse()) {
+      if (!getResponse()
+          .equals(other.getResponse())) return false;
     }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
@@ -425,17 +369,13 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + DONE_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getDone());
-    switch (resultCase_) {
-      case 4:
-        hash = (37 * hash) + MOJO_CORE_ERROR_FIELD_NUMBER;
-        hash = (53 * hash) + getMojoCoreError().hashCode();
-        break;
-      case 5:
-        hash = (37 * hash) + MOJO_CORE_ANY_FIELD_NUMBER;
-        hash = (53 * hash) + getMojoCoreAny().hashCode();
-        break;
-      case 0:
-      default:
+    if (hasError()) {
+      hash = (37 * hash) + ERROR_FIELD_NUMBER;
+      hash = (53 * hash) + getError().hashCode();
+    }
+    if (hasResponse()) {
+      hash = (37 * hash) + RESPONSE_FIELD_NUMBER;
+      hash = (53 * hash) + getResponse().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -580,8 +520,18 @@ private static final long serialVersionUID = 0L;
       }
       done_ = false;
 
-      resultCase_ = 0;
-      result_ = null;
+      if (errorBuilder_ == null) {
+        error_ = null;
+      } else {
+        error_ = null;
+        errorBuilder_ = null;
+      }
+      if (responseBuilder_ == null) {
+        response_ = null;
+      } else {
+        response_ = null;
+        responseBuilder_ = null;
+      }
       return this;
     }
 
@@ -615,21 +565,16 @@ private static final long serialVersionUID = 0L;
         result.metadata_ = metadataBuilder_.build();
       }
       result.done_ = done_;
-      if (resultCase_ == 4) {
-        if (mojoCoreErrorBuilder_ == null) {
-          result.result_ = result_;
-        } else {
-          result.result_ = mojoCoreErrorBuilder_.build();
-        }
+      if (errorBuilder_ == null) {
+        result.error_ = error_;
+      } else {
+        result.error_ = errorBuilder_.build();
       }
-      if (resultCase_ == 5) {
-        if (mojoCoreAnyBuilder_ == null) {
-          result.result_ = result_;
-        } else {
-          result.result_ = mojoCoreAnyBuilder_.build();
-        }
+      if (responseBuilder_ == null) {
+        result.response_ = response_;
+      } else {
+        result.response_ = responseBuilder_.build();
       }
-      result.resultCase_ = resultCase_;
       onBuilt();
       return result;
     }
@@ -688,18 +633,11 @@ private static final long serialVersionUID = 0L;
       if (other.getDone() != false) {
         setDone(other.getDone());
       }
-      switch (other.getResultCase()) {
-        case MOJO_CORE_ERROR: {
-          mergeMojoCoreError(other.getMojoCoreError());
-          break;
-        }
-        case MOJO_CORE_ANY: {
-          mergeMojoCoreAny(other.getMojoCoreAny());
-          break;
-        }
-        case RESULT_NOT_SET: {
-          break;
-        }
+      if (other.hasError()) {
+        mergeError(other.getError());
+      }
+      if (other.hasResponse()) {
+        mergeResponse(other.getResponse());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -729,21 +667,6 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    private int resultCase_ = 0;
-    private java.lang.Object result_;
-    public ResultCase
-        getResultCase() {
-      return ResultCase.forNumber(
-          resultCase_);
-    }
-
-    public Builder clearResult() {
-      resultCase_ = 0;
-      result_ = null;
-      onChanged();
-      return this;
-    }
-
 
     private java.lang.Object name_ = "";
     /**
@@ -971,286 +894,242 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private org.mojolang.mojo.core.Error error_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        org.mojolang.mojo.core.Error, org.mojolang.mojo.core.Error.Builder, org.mojolang.mojo.core.ErrorOrBuilder> mojoCoreErrorBuilder_;
+        org.mojolang.mojo.core.Error, org.mojolang.mojo.core.Error.Builder, org.mojolang.mojo.core.ErrorOrBuilder> errorBuilder_;
     /**
-     * <code>.mojo.core.Error mojo_core_error = 4;</code>
-     * @return Whether the mojoCoreError field is set.
+     * <code>.mojo.core.Error error = 4;</code>
+     * @return Whether the error field is set.
      */
-    @java.lang.Override
-    public boolean hasMojoCoreError() {
-      return resultCase_ == 4;
+    public boolean hasError() {
+      return errorBuilder_ != null || error_ != null;
     }
     /**
-     * <code>.mojo.core.Error mojo_core_error = 4;</code>
-     * @return The mojoCoreError.
+     * <code>.mojo.core.Error error = 4;</code>
+     * @return The error.
      */
-    @java.lang.Override
-    public org.mojolang.mojo.core.Error getMojoCoreError() {
-      if (mojoCoreErrorBuilder_ == null) {
-        if (resultCase_ == 4) {
-          return (org.mojolang.mojo.core.Error) result_;
-        }
-        return org.mojolang.mojo.core.Error.getDefaultInstance();
+    public org.mojolang.mojo.core.Error getError() {
+      if (errorBuilder_ == null) {
+        return error_ == null ? org.mojolang.mojo.core.Error.getDefaultInstance() : error_;
       } else {
-        if (resultCase_ == 4) {
-          return mojoCoreErrorBuilder_.getMessage();
-        }
-        return org.mojolang.mojo.core.Error.getDefaultInstance();
+        return errorBuilder_.getMessage();
       }
     }
     /**
-     * <code>.mojo.core.Error mojo_core_error = 4;</code>
+     * <code>.mojo.core.Error error = 4;</code>
      */
-    public Builder setMojoCoreError(org.mojolang.mojo.core.Error value) {
-      if (mojoCoreErrorBuilder_ == null) {
+    public Builder setError(org.mojolang.mojo.core.Error value) {
+      if (errorBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        result_ = value;
+        error_ = value;
         onChanged();
       } else {
-        mojoCoreErrorBuilder_.setMessage(value);
+        errorBuilder_.setMessage(value);
       }
-      resultCase_ = 4;
+
       return this;
     }
     /**
-     * <code>.mojo.core.Error mojo_core_error = 4;</code>
+     * <code>.mojo.core.Error error = 4;</code>
      */
-    public Builder setMojoCoreError(
+    public Builder setError(
         org.mojolang.mojo.core.Error.Builder builderForValue) {
-      if (mojoCoreErrorBuilder_ == null) {
-        result_ = builderForValue.build();
+      if (errorBuilder_ == null) {
+        error_ = builderForValue.build();
         onChanged();
       } else {
-        mojoCoreErrorBuilder_.setMessage(builderForValue.build());
+        errorBuilder_.setMessage(builderForValue.build());
       }
-      resultCase_ = 4;
+
       return this;
     }
     /**
-     * <code>.mojo.core.Error mojo_core_error = 4;</code>
+     * <code>.mojo.core.Error error = 4;</code>
      */
-    public Builder mergeMojoCoreError(org.mojolang.mojo.core.Error value) {
-      if (mojoCoreErrorBuilder_ == null) {
-        if (resultCase_ == 4 &&
-            result_ != org.mojolang.mojo.core.Error.getDefaultInstance()) {
-          result_ = org.mojolang.mojo.core.Error.newBuilder((org.mojolang.mojo.core.Error) result_)
-              .mergeFrom(value).buildPartial();
+    public Builder mergeError(org.mojolang.mojo.core.Error value) {
+      if (errorBuilder_ == null) {
+        if (error_ != null) {
+          error_ =
+            org.mojolang.mojo.core.Error.newBuilder(error_).mergeFrom(value).buildPartial();
         } else {
-          result_ = value;
+          error_ = value;
         }
         onChanged();
       } else {
-        if (resultCase_ == 4) {
-          mojoCoreErrorBuilder_.mergeFrom(value);
-        }
-        mojoCoreErrorBuilder_.setMessage(value);
+        errorBuilder_.mergeFrom(value);
       }
-      resultCase_ = 4;
+
       return this;
     }
     /**
-     * <code>.mojo.core.Error mojo_core_error = 4;</code>
+     * <code>.mojo.core.Error error = 4;</code>
      */
-    public Builder clearMojoCoreError() {
-      if (mojoCoreErrorBuilder_ == null) {
-        if (resultCase_ == 4) {
-          resultCase_ = 0;
-          result_ = null;
-          onChanged();
-        }
+    public Builder clearError() {
+      if (errorBuilder_ == null) {
+        error_ = null;
+        onChanged();
       } else {
-        if (resultCase_ == 4) {
-          resultCase_ = 0;
-          result_ = null;
-        }
-        mojoCoreErrorBuilder_.clear();
+        error_ = null;
+        errorBuilder_ = null;
       }
+
       return this;
     }
     /**
-     * <code>.mojo.core.Error mojo_core_error = 4;</code>
+     * <code>.mojo.core.Error error = 4;</code>
      */
-    public org.mojolang.mojo.core.Error.Builder getMojoCoreErrorBuilder() {
-      return getMojoCoreErrorFieldBuilder().getBuilder();
+    public org.mojolang.mojo.core.Error.Builder getErrorBuilder() {
+      
+      onChanged();
+      return getErrorFieldBuilder().getBuilder();
     }
     /**
-     * <code>.mojo.core.Error mojo_core_error = 4;</code>
+     * <code>.mojo.core.Error error = 4;</code>
      */
-    @java.lang.Override
-    public org.mojolang.mojo.core.ErrorOrBuilder getMojoCoreErrorOrBuilder() {
-      if ((resultCase_ == 4) && (mojoCoreErrorBuilder_ != null)) {
-        return mojoCoreErrorBuilder_.getMessageOrBuilder();
+    public org.mojolang.mojo.core.ErrorOrBuilder getErrorOrBuilder() {
+      if (errorBuilder_ != null) {
+        return errorBuilder_.getMessageOrBuilder();
       } else {
-        if (resultCase_ == 4) {
-          return (org.mojolang.mojo.core.Error) result_;
-        }
-        return org.mojolang.mojo.core.Error.getDefaultInstance();
+        return error_ == null ?
+            org.mojolang.mojo.core.Error.getDefaultInstance() : error_;
       }
     }
     /**
-     * <code>.mojo.core.Error mojo_core_error = 4;</code>
+     * <code>.mojo.core.Error error = 4;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         org.mojolang.mojo.core.Error, org.mojolang.mojo.core.Error.Builder, org.mojolang.mojo.core.ErrorOrBuilder> 
-        getMojoCoreErrorFieldBuilder() {
-      if (mojoCoreErrorBuilder_ == null) {
-        if (!(resultCase_ == 4)) {
-          result_ = org.mojolang.mojo.core.Error.getDefaultInstance();
-        }
-        mojoCoreErrorBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+        getErrorFieldBuilder() {
+      if (errorBuilder_ == null) {
+        errorBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
             org.mojolang.mojo.core.Error, org.mojolang.mojo.core.Error.Builder, org.mojolang.mojo.core.ErrorOrBuilder>(
-                (org.mojolang.mojo.core.Error) result_,
+                getError(),
                 getParentForChildren(),
                 isClean());
-        result_ = null;
+        error_ = null;
       }
-      resultCase_ = 4;
-      onChanged();;
-      return mojoCoreErrorBuilder_;
+      return errorBuilder_;
     }
 
+    private org.mojolang.mojo.core.Any response_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        org.mojolang.mojo.core.Any, org.mojolang.mojo.core.Any.Builder, org.mojolang.mojo.core.AnyOrBuilder> mojoCoreAnyBuilder_;
+        org.mojolang.mojo.core.Any, org.mojolang.mojo.core.Any.Builder, org.mojolang.mojo.core.AnyOrBuilder> responseBuilder_;
     /**
-     * <code>.mojo.core.Any mojo_core_any = 5;</code>
-     * @return Whether the mojoCoreAny field is set.
+     * <code>.mojo.core.Any response = 5;</code>
+     * @return Whether the response field is set.
      */
-    @java.lang.Override
-    public boolean hasMojoCoreAny() {
-      return resultCase_ == 5;
+    public boolean hasResponse() {
+      return responseBuilder_ != null || response_ != null;
     }
     /**
-     * <code>.mojo.core.Any mojo_core_any = 5;</code>
-     * @return The mojoCoreAny.
+     * <code>.mojo.core.Any response = 5;</code>
+     * @return The response.
      */
-    @java.lang.Override
-    public org.mojolang.mojo.core.Any getMojoCoreAny() {
-      if (mojoCoreAnyBuilder_ == null) {
-        if (resultCase_ == 5) {
-          return (org.mojolang.mojo.core.Any) result_;
-        }
-        return org.mojolang.mojo.core.Any.getDefaultInstance();
+    public org.mojolang.mojo.core.Any getResponse() {
+      if (responseBuilder_ == null) {
+        return response_ == null ? org.mojolang.mojo.core.Any.getDefaultInstance() : response_;
       } else {
-        if (resultCase_ == 5) {
-          return mojoCoreAnyBuilder_.getMessage();
-        }
-        return org.mojolang.mojo.core.Any.getDefaultInstance();
+        return responseBuilder_.getMessage();
       }
     }
     /**
-     * <code>.mojo.core.Any mojo_core_any = 5;</code>
+     * <code>.mojo.core.Any response = 5;</code>
      */
-    public Builder setMojoCoreAny(org.mojolang.mojo.core.Any value) {
-      if (mojoCoreAnyBuilder_ == null) {
+    public Builder setResponse(org.mojolang.mojo.core.Any value) {
+      if (responseBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        result_ = value;
+        response_ = value;
         onChanged();
       } else {
-        mojoCoreAnyBuilder_.setMessage(value);
+        responseBuilder_.setMessage(value);
       }
-      resultCase_ = 5;
+
       return this;
     }
     /**
-     * <code>.mojo.core.Any mojo_core_any = 5;</code>
+     * <code>.mojo.core.Any response = 5;</code>
      */
-    public Builder setMojoCoreAny(
+    public Builder setResponse(
         org.mojolang.mojo.core.Any.Builder builderForValue) {
-      if (mojoCoreAnyBuilder_ == null) {
-        result_ = builderForValue.build();
+      if (responseBuilder_ == null) {
+        response_ = builderForValue.build();
         onChanged();
       } else {
-        mojoCoreAnyBuilder_.setMessage(builderForValue.build());
+        responseBuilder_.setMessage(builderForValue.build());
       }
-      resultCase_ = 5;
+
       return this;
     }
     /**
-     * <code>.mojo.core.Any mojo_core_any = 5;</code>
+     * <code>.mojo.core.Any response = 5;</code>
      */
-    public Builder mergeMojoCoreAny(org.mojolang.mojo.core.Any value) {
-      if (mojoCoreAnyBuilder_ == null) {
-        if (resultCase_ == 5 &&
-            result_ != org.mojolang.mojo.core.Any.getDefaultInstance()) {
-          result_ = org.mojolang.mojo.core.Any.newBuilder((org.mojolang.mojo.core.Any) result_)
-              .mergeFrom(value).buildPartial();
+    public Builder mergeResponse(org.mojolang.mojo.core.Any value) {
+      if (responseBuilder_ == null) {
+        if (response_ != null) {
+          response_ =
+            org.mojolang.mojo.core.Any.newBuilder(response_).mergeFrom(value).buildPartial();
         } else {
-          result_ = value;
+          response_ = value;
         }
         onChanged();
       } else {
-        if (resultCase_ == 5) {
-          mojoCoreAnyBuilder_.mergeFrom(value);
-        }
-        mojoCoreAnyBuilder_.setMessage(value);
+        responseBuilder_.mergeFrom(value);
       }
-      resultCase_ = 5;
+
       return this;
     }
     /**
-     * <code>.mojo.core.Any mojo_core_any = 5;</code>
+     * <code>.mojo.core.Any response = 5;</code>
      */
-    public Builder clearMojoCoreAny() {
-      if (mojoCoreAnyBuilder_ == null) {
-        if (resultCase_ == 5) {
-          resultCase_ = 0;
-          result_ = null;
-          onChanged();
-        }
+    public Builder clearResponse() {
+      if (responseBuilder_ == null) {
+        response_ = null;
+        onChanged();
       } else {
-        if (resultCase_ == 5) {
-          resultCase_ = 0;
-          result_ = null;
-        }
-        mojoCoreAnyBuilder_.clear();
+        response_ = null;
+        responseBuilder_ = null;
       }
+
       return this;
     }
     /**
-     * <code>.mojo.core.Any mojo_core_any = 5;</code>
+     * <code>.mojo.core.Any response = 5;</code>
      */
-    public org.mojolang.mojo.core.Any.Builder getMojoCoreAnyBuilder() {
-      return getMojoCoreAnyFieldBuilder().getBuilder();
+    public org.mojolang.mojo.core.Any.Builder getResponseBuilder() {
+      
+      onChanged();
+      return getResponseFieldBuilder().getBuilder();
     }
     /**
-     * <code>.mojo.core.Any mojo_core_any = 5;</code>
+     * <code>.mojo.core.Any response = 5;</code>
      */
-    @java.lang.Override
-    public org.mojolang.mojo.core.AnyOrBuilder getMojoCoreAnyOrBuilder() {
-      if ((resultCase_ == 5) && (mojoCoreAnyBuilder_ != null)) {
-        return mojoCoreAnyBuilder_.getMessageOrBuilder();
+    public org.mojolang.mojo.core.AnyOrBuilder getResponseOrBuilder() {
+      if (responseBuilder_ != null) {
+        return responseBuilder_.getMessageOrBuilder();
       } else {
-        if (resultCase_ == 5) {
-          return (org.mojolang.mojo.core.Any) result_;
-        }
-        return org.mojolang.mojo.core.Any.getDefaultInstance();
+        return response_ == null ?
+            org.mojolang.mojo.core.Any.getDefaultInstance() : response_;
       }
     }
     /**
-     * <code>.mojo.core.Any mojo_core_any = 5;</code>
+     * <code>.mojo.core.Any response = 5;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         org.mojolang.mojo.core.Any, org.mojolang.mojo.core.Any.Builder, org.mojolang.mojo.core.AnyOrBuilder> 
-        getMojoCoreAnyFieldBuilder() {
-      if (mojoCoreAnyBuilder_ == null) {
-        if (!(resultCase_ == 5)) {
-          result_ = org.mojolang.mojo.core.Any.getDefaultInstance();
-        }
-        mojoCoreAnyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+        getResponseFieldBuilder() {
+      if (responseBuilder_ == null) {
+        responseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
             org.mojolang.mojo.core.Any, org.mojolang.mojo.core.Any.Builder, org.mojolang.mojo.core.AnyOrBuilder>(
-                (org.mojolang.mojo.core.Any) result_,
+                getResponse(),
                 getParentForChildren(),
                 isClean());
-        result_ = null;
+        response_ = null;
       }
-      resultCase_ = 5;
-      onChanged();;
-      return mojoCoreAnyBuilder_;
+      return responseBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

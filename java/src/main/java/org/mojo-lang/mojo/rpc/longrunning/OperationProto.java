@@ -30,15 +30,14 @@ public final class OperationProto {
     java.lang.String[] descriptorData = {
       "\n$mojo/rpc/longrunning/operation.proto\022\024" +
       "mojo.rpc.longrunning\032\023mojo/core/any.prot" +
-      "o\032\025mojo/core/error.proto\"\251\001\n\tOperation\022\014" +
+      "o\032\025mojo/core/error.proto\"\214\001\n\tOperation\022\014" +
       "\n\004name\030\001 \001(\t\022 \n\010metadata\030\002 \001(\0132\016.mojo.co" +
-      "re.Any\022\014\n\004done\030\003 \001(\010\022+\n\017mojo_core_error\030" +
-      "\004 \001(\0132\020.mojo.core.ErrorH\000\022\'\n\rmojo_core_a" +
-      "ny\030\005 \001(\0132\016.mojo.core.AnyH\000B\010\n\006resultBx\n\"" +
-      "org.mojo-lang.mojo.rpc.longrunningB\016Oper" +
-      "ationProtoP\001Z@github.com/mojo-lang/rpc/g" +
-      "o/pkg/mojo/rpc/longrunning;longrunningb\006" +
-      "proto3"
+      "re.Any\022\014\n\004done\030\003 \001(\010\022\037\n\005error\030\004 \001(\0132\020.mo" +
+      "jo.core.Error\022 \n\010response\030\005 \001(\0132\016.mojo.c" +
+      "ore.AnyBx\n\"org.mojo-lang.mojo.rpc.longru" +
+      "nningB\016OperationProtoP\001Z@github.com/mojo" +
+      "-lang/rpc/go/pkg/mojo/rpc/longrunning;lo" +
+      "ngrunningb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -51,7 +50,7 @@ public final class OperationProto {
     internal_static_mojo_rpc_longrunning_Operation_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mojo_rpc_longrunning_Operation_descriptor,
-        new java.lang.String[] { "Name", "Metadata", "Done", "MojoCoreError", "MojoCoreAny", "Result", });
+        new java.lang.String[] { "Name", "Metadata", "Done", "Error", "Response", });
     org.mojolang.mojo.core.AnyProto.getDescriptor();
     org.mojolang.mojo.core.ErrorProto.getDescriptor();
   }

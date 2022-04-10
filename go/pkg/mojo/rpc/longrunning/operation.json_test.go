@@ -9,24 +9,16 @@ import (
     "github.com/stretchr/testify/assert"
 )
 
-const operationMetadata = `{
-    "name": "uuid",
-    "metadata": {
-        "@type": "mojo.core.Checksum",
-        "algorithm": "sha256",
-        "value": "value"
-    }
-}`
+const operationMetadata = `{"name":"uuid","metadata":{"@type":"mojo.core.Checksum","value":"SHA256 a591a6d40bf420404a011733cfb7b190d62c65bf0bcda32b57b277d9ad9f146e"}}`
 
 const operationError = `{
     "name": "uuid",
     "done": true,
     "metadata": {
         "@type": "mojo.core.Checksum",
-        "algorithm": "sha256",
-        "value": "value"
+        "value": "SHA256 a591a6d40bf420404a011733cfb7b190d62c65bf0bcda32b57b277d9ad9f146e"
     },
-    "result": {
+    "error": {
         "code": "404"
         "message": "something wrong"
     }
@@ -37,13 +29,11 @@ const operationValue = `{
     "done": true,
     "metadata": {
         "@type": "mojo.core.Checksum",
-        "algorithm": "sha256",
-        "value": "value"
+        "value": "SHA256 a591a6d40bf420404a011733cfb7b190d62c65bf0bcda32b57b277d9ad9f146e"
     },
-    "result": {
+    "response": {
         "@type": "mojo.core.Checksum",
-        "algorithm": "sha256",
-        "value": "value"
+        "value": "SHA256 a591a6d40bf420404a011733cfb7b190d62c65bf0bcda32b57b277d9ad9f146e"
     }
 }`
 
@@ -74,15 +64,11 @@ func TestOperationCodec_Decode_Value(t *testing.T) {
 func TestOperationCodec_Encode(t *testing.T) {
     operation := &Operation{
         Name:     "uuid",
-        Metadata: core.NewAny(&core.Checksum{Algorithm: core.Checksum_ALGORITHM_SHA256, Value: "value"}),
+        Metadata: core.NewAny(core.NewChecksum(core.Checksum_ALGORITHM_SHA256, []byte("Hello World"))),
         Done:     false,
     }
 
     str, err := jsoniter.ConfigFastest.MarshalToString(operation)
     assert.NoError(t, err)
-
-    var f interface{}
-    jsoniter.ConfigFastest.UnmarshalFromString(operationMetadata, &f)
-    out, _ := jsoniter.ConfigFastest.MarshalToString(f)
-    assert.Equal(t, out, str)
+    assert.Equal(t, operationMetadata, str)
 }
