@@ -441,6 +441,9 @@ components:
             originally returns it. If you use the default HTTP mapping, the
             `name` should be a resource name ending with `operations/{unique_id}`.
           type: string
+        parentName:
+          description: The parent operation name
+          type: string
         response:
           description: |-
             The normal response of the operation in case of success.  If the original

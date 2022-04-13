@@ -23,6 +23,9 @@ type Operation {
   /// `name` should be a resource name ending with `operations/{unique_id}`.
   name: String @1 @key
 
+  /// The parent operation name
+  parent_name: String @10 @db.index
+
   /// Service-specific metadata associated with the operation.  It typically
   /// contains progress information and common metadata such as create time.
   /// Some services might not provide such metadata.  Any method that returns a
