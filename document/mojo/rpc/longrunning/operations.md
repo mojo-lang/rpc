@@ -68,6 +68,7 @@ GET /operation/v1/{{service}}/operations
 | `done` | `boolean` |  | 否 |  | If the value is `false`, it means the operation is still in progress.If `true`, the operation is completed, and either `error` or `response` isavailable. |
 | `error` | `Error` |  | 否 |  | The operation result, which can be either an `error` or a valid `response`.If `done` == `false`, neither `error` nor `response` is set.If `done` == `true`, exactly one of `error` or `response` is set.The error result of the operation in case of failure or cancellation. |
 | `response` | `Any` |  | 否 |  | The normal response of the operation in case of success.  If the originalmethod returns no data on success, such as `Delete`, the response is`google.protobuf.Empty`.  If the original method is standard`Get`/`Create`/`Update`, the response should be the resource.  For othermethods, the response should have the type `XxxResponse`, where `Xxx`is the original method name.  For example, if the original method nameis `TakeSnapshot()`, the inferred response type is`TakeSnapshotResponse`. |
+| `updateTime` | `string` | `DateTime` | 否 |  | the updated timestamp for the operation when update the progression information. |
 
 
 #### `Any`
@@ -110,6 +111,12 @@ GET /operation/v1/{{service}}/operations/{name}
 | `done` | `boolean` |  | 否 |  | If the value is `false`, it means the operation is still in progress.If `true`, the operation is completed, and either `error` or `response` isavailable. |
 | `error` | `Error` |  | 否 |  | The operation result, which can be either an `error` or a valid `response`.If `done` == `false`, neither `error` nor `response` is set.If `done` == `true`, exactly one of `error` or `response` is set.The error result of the operation in case of failure or cancellation. |
 | `response` | `Any` |  | 否 |  | The normal response of the operation in case of success.  If the originalmethod returns no data on success, such as `Delete`, the response is`google.protobuf.Empty`.  If the original method is standard`Get`/`Create`/`Update`, the response should be the resource.  For othermethods, the response should have the type `XxxResponse`, where `Xxx`is the original method name.  For example, if the original method nameis `TakeSnapshot()`, the inferred response type is`TakeSnapshotResponse`. |
+| `updateTime` | `string` | `DateTime` | 否 |  | the updated timestamp for the operation when update the progression information. |
+
+
+#### `Any`
+| 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
+|---|---|---|---|---|---|
 
 
 #### `Error`
@@ -118,11 +125,6 @@ GET /operation/v1/{{service}}/operations/{name}
 | `code` | `string` | `ErrorCode` | 否 |  |
 | `message` | `string` |  | 否 |  | A developer-facing error message, which should be in English. |
 | `details` | `Array<Any>` |  | 否 |  | A list of messages that carry the error details.  There is a common set of message types for APIs to use. |
-
-
-#### `Any`
-| 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
-|---|---|---|---|---|---|
 
 
 ## Deletes a long-running operation. This method indicates that the client isno longer interested in the operation result. It does not cancel theoperation. If the server doesn't support this method, it returns`google.rpc.Code.UNIMPLEMENTED`.
@@ -202,6 +204,12 @@ If RPC context deadline is also specified, the shorter one will be used. |
 | `done` | `boolean` |  | 否 |  | If the value is `false`, it means the operation is still in progress.If `true`, the operation is completed, and either `error` or `response` isavailable. |
 | `error` | `Error` |  | 否 |  | The operation result, which can be either an `error` or a valid `response`.If `done` == `false`, neither `error` nor `response` is set.If `done` == `true`, exactly one of `error` or `response` is set.The error result of the operation in case of failure or cancellation. |
 | `response` | `Any` |  | 否 |  | The normal response of the operation in case of success.  If the originalmethod returns no data on success, such as `Delete`, the response is`google.protobuf.Empty`.  If the original method is standard`Get`/`Create`/`Update`, the response should be the resource.  For othermethods, the response should have the type `XxxResponse`, where `Xxx`is the original method name.  For example, if the original method nameis `TakeSnapshot()`, the inferred response type is`TakeSnapshotResponse`. |
+| `updateTime` | `string` | `DateTime` | 否 |  | the updated timestamp for the operation when update the progression information. |
+
+
+#### `Any`
+| 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
+|---|---|---|---|---|---|
 
 
 #### `Error`
@@ -210,8 +218,3 @@ If RPC context deadline is also specified, the shorter one will be used. |
 | `code` | `string` | `ErrorCode` | 否 |  |
 | `message` | `string` |  | 否 |  | A developer-facing error message, which should be in English. |
 | `details` | `Array<Any>` |  | 否 |  | A list of messages that carry the error details.  There is a common set of message types for APIs to use. |
-
-
-#### `Any`
-| 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
-|---|---|---|---|---|---|

@@ -30,21 +30,24 @@ public final class OperationProto {
     java.lang.String[] descriptorData = {
       "\n$mojo/rpc/longrunning/operation.proto\022\024" +
       "mojo.rpc.longrunning\032\023mojo/core/any.prot" +
-      "o\032\025mojo/core/error.proto\032\017mojo/mojo.prot" +
-      "o\"\255\001\n\tOperation\022\022\n\004name\030\001 \001(\tB\004\322\317$\000\022\031\n\013p" +
-      "arent_name\030\n \001(\tB\004\212\326$\000\022 \n\010metadata\030\002 \001(\013" +
-      "2\016.mojo.core.Any\022\014\n\004done\030\003 \001(\010\022\037\n\005error\030" +
-      "\004 \001(\0132\020.mojo.core.Error\022 \n\010response\030\005 \001(" +
-      "\0132\016.mojo.core.AnyBx\n\"org.mojo-lang.mojo." +
-      "rpc.longrunningB\016OperationProtoP\001Z@githu" +
-      "b.com/mojo-lang/rpc/go/pkg/mojo/rpc/long" +
-      "running;longrunningb\006proto3"
+      "o\032\025mojo/core/error.proto\032\024mojo/core/time" +
+      ".proto\032\017mojo/mojo.proto\"\330\001\n\tOperation\022\022\n" +
+      "\004name\030\001 \001(\tB\004\322\317$\000\022\031\n\013parent_name\030\n \001(\tB\004" +
+      "\212\326$\000\022 \n\010metadata\030\002 \001(\0132\016.mojo.core.Any\022\014" +
+      "\n\004done\030\003 \001(\010\022\037\n\005error\030\004 \001(\0132\020.mojo.core." +
+      "Error\022 \n\010response\030\005 \001(\0132\016.mojo.core.Any\022" +
+      ")\n\013update_time\030\017 \001(\0132\024.mojo.core.Timesta" +
+      "mpBx\n\"org.mojo-lang.mojo.rpc.longrunning" +
+      "B\016OperationProtoP\001Z@github.com/mojo-lang" +
+      "/rpc/go/pkg/mojo/rpc/longrunning;longrun" +
+      "ningb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           org.mojolang.mojo.core.AnyProto.getDescriptor(),
           org.mojolang.mojo.core.ErrorProto.getDescriptor(),
+          org.mojolang.mojo.core.TimeProto.getDescriptor(),
           com.google.protobuf.MojoProtos.getDescriptor(),
         });
     internal_static_mojo_rpc_longrunning_Operation_descriptor =
@@ -52,7 +55,7 @@ public final class OperationProto {
     internal_static_mojo_rpc_longrunning_Operation_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mojo_rpc_longrunning_Operation_descriptor,
-        new java.lang.String[] { "Name", "ParentName", "Metadata", "Done", "Error", "Response", });
+        new java.lang.String[] { "Name", "ParentName", "Metadata", "Done", "Error", "Response", "UpdateTime", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(com.google.protobuf.MojoProtos.dbIndex);
@@ -61,6 +64,7 @@ public final class OperationProto {
         .internalUpdateFileDescriptor(descriptor, registry);
     org.mojolang.mojo.core.AnyProto.getDescriptor();
     org.mojolang.mojo.core.ErrorProto.getDescriptor();
+    org.mojolang.mojo.core.TimeProto.getDescriptor();
     com.google.protobuf.MojoProtos.getDescriptor();
   }
 

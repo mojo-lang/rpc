@@ -52,4 +52,7 @@ type Operation {
   /// is `TakeSnapshot()`, the inferred response type is
   /// `TakeSnapshotResponse`.
   response: Any @5
+
+  /// the updated timestamp for the operation when update the progression information.
+  update_time: Timestamp @15
 }

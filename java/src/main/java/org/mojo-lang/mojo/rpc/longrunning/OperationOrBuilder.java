@@ -81,4 +81,19 @@ public interface OperationOrBuilder extends
    * <code>.mojo.core.Any response = 5;</code>
    */
   org.mojolang.mojo.core.AnyOrBuilder getResponseOrBuilder();
+
+  /**
+   * <code>.mojo.core.Timestamp update_time = 15;</code>
+   * @return Whether the updateTime field is set.
+   */
+  boolean hasUpdateTime();
+  /**
+   * <code>.mojo.core.Timestamp update_time = 15;</code>
+   * @return The updateTime.
+   */
+  org.mojolang.mojo.core.Timestamp getUpdateTime();
+  /**
+   * <code>.mojo.core.Timestamp update_time = 15;</code>
+   */
+  org.mojolang.mojo.core.TimestampOrBuilder getUpdateTimeOrBuilder();
 }

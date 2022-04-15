@@ -6,6 +6,7 @@ package mojo.rpc.longrunning;
 
 import "mojo/core/any.proto";
 import "mojo/core/error.proto";
+import "mojo/core/time.proto";
 import "mojo/mojo.proto";
 
 option go_package = "github.com/mojo-lang/rpc/go/pkg/mojo/rpc/longrunning;longrunning";
@@ -20,4 +21,5 @@ message Operation {
     bool done = 3;
     mojo.core.Error error = 4;
     mojo.core.Any response = 5;
+    mojo.core.Timestamp update_time = 15;
 }

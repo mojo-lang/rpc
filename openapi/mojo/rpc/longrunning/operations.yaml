@@ -456,6 +456,12 @@ components:
             `TakeSnapshotResponse`.
           title: Any
           type: object
+        updateTime:
+          description: the updated timestamp for the operation when update the progression
+            information.
+          format: DateTime
+          title: DateTime
+          type: string
       title: mojo.rpc.longrunning.Operation
       type: object
 info:

@@ -106,6 +106,19 @@ private static final long serialVersionUID = 0L;
             parentName_ = s;
             break;
           }
+          case 122: {
+            org.mojolang.mojo.core.Timestamp.Builder subBuilder = null;
+            if (updateTime_ != null) {
+              subBuilder = updateTime_.toBuilder();
+            }
+            updateTime_ = input.readMessage(org.mojolang.mojo.core.Timestamp.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(updateTime_);
+              updateTime_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -303,6 +316,32 @@ private static final long serialVersionUID = 0L;
     return getResponse();
   }
 
+  public static final int UPDATE_TIME_FIELD_NUMBER = 15;
+  private org.mojolang.mojo.core.Timestamp updateTime_;
+  /**
+   * <code>.mojo.core.Timestamp update_time = 15;</code>
+   * @return Whether the updateTime field is set.
+   */
+  @java.lang.Override
+  public boolean hasUpdateTime() {
+    return updateTime_ != null;
+  }
+  /**
+   * <code>.mojo.core.Timestamp update_time = 15;</code>
+   * @return The updateTime.
+   */
+  @java.lang.Override
+  public org.mojolang.mojo.core.Timestamp getUpdateTime() {
+    return updateTime_ == null ? org.mojolang.mojo.core.Timestamp.getDefaultInstance() : updateTime_;
+  }
+  /**
+   * <code>.mojo.core.Timestamp update_time = 15;</code>
+   */
+  @java.lang.Override
+  public org.mojolang.mojo.core.TimestampOrBuilder getUpdateTimeOrBuilder() {
+    return getUpdateTime();
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -335,6 +374,9 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(parentName_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 10, parentName_);
     }
+    if (updateTime_ != null) {
+      output.writeMessage(15, getUpdateTime());
+    }
     unknownFields.writeTo(output);
   }
 
@@ -365,6 +407,10 @@ private static final long serialVersionUID = 0L;
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(parentName_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, parentName_);
+    }
+    if (updateTime_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(15, getUpdateTime());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -402,6 +448,11 @@ private static final long serialVersionUID = 0L;
       if (!getResponse()
           .equals(other.getResponse())) return false;
     }
+    if (hasUpdateTime() != other.hasUpdateTime()) return false;
+    if (hasUpdateTime()) {
+      if (!getUpdateTime()
+          .equals(other.getUpdateTime())) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -431,6 +482,10 @@ private static final long serialVersionUID = 0L;
     if (hasResponse()) {
       hash = (37 * hash) + RESPONSE_FIELD_NUMBER;
       hash = (53 * hash) + getResponse().hashCode();
+    }
+    if (hasUpdateTime()) {
+      hash = (37 * hash) + UPDATE_TIME_FIELD_NUMBER;
+      hash = (53 * hash) + getUpdateTime().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -589,6 +644,12 @@ private static final long serialVersionUID = 0L;
         response_ = null;
         responseBuilder_ = null;
       }
+      if (updateTimeBuilder_ == null) {
+        updateTime_ = null;
+      } else {
+        updateTime_ = null;
+        updateTimeBuilder_ = null;
+      }
       return this;
     }
 
@@ -632,6 +693,11 @@ private static final long serialVersionUID = 0L;
         result.response_ = response_;
       } else {
         result.response_ = responseBuilder_.build();
+      }
+      if (updateTimeBuilder_ == null) {
+        result.updateTime_ = updateTime_;
+      } else {
+        result.updateTime_ = updateTimeBuilder_.build();
       }
       onBuilt();
       return result;
@@ -700,6 +766,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.hasResponse()) {
         mergeResponse(other.getResponse());
+      }
+      if (other.hasUpdateTime()) {
+        mergeUpdateTime(other.getUpdateTime());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -1268,6 +1337,125 @@ private static final long serialVersionUID = 0L;
         response_ = null;
       }
       return responseBuilder_;
+    }
+
+    private org.mojolang.mojo.core.Timestamp updateTime_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        org.mojolang.mojo.core.Timestamp, org.mojolang.mojo.core.Timestamp.Builder, org.mojolang.mojo.core.TimestampOrBuilder> updateTimeBuilder_;
+    /**
+     * <code>.mojo.core.Timestamp update_time = 15;</code>
+     * @return Whether the updateTime field is set.
+     */
+    public boolean hasUpdateTime() {
+      return updateTimeBuilder_ != null || updateTime_ != null;
+    }
+    /**
+     * <code>.mojo.core.Timestamp update_time = 15;</code>
+     * @return The updateTime.
+     */
+    public org.mojolang.mojo.core.Timestamp getUpdateTime() {
+      if (updateTimeBuilder_ == null) {
+        return updateTime_ == null ? org.mojolang.mojo.core.Timestamp.getDefaultInstance() : updateTime_;
+      } else {
+        return updateTimeBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.mojo.core.Timestamp update_time = 15;</code>
+     */
+    public Builder setUpdateTime(org.mojolang.mojo.core.Timestamp value) {
+      if (updateTimeBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        updateTime_ = value;
+        onChanged();
+      } else {
+        updateTimeBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.mojo.core.Timestamp update_time = 15;</code>
+     */
+    public Builder setUpdateTime(
+        org.mojolang.mojo.core.Timestamp.Builder builderForValue) {
+      if (updateTimeBuilder_ == null) {
+        updateTime_ = builderForValue.build();
+        onChanged();
+      } else {
+        updateTimeBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.mojo.core.Timestamp update_time = 15;</code>
+     */
+    public Builder mergeUpdateTime(org.mojolang.mojo.core.Timestamp value) {
+      if (updateTimeBuilder_ == null) {
+        if (updateTime_ != null) {
+          updateTime_ =
+            org.mojolang.mojo.core.Timestamp.newBuilder(updateTime_).mergeFrom(value).buildPartial();
+        } else {
+          updateTime_ = value;
+        }
+        onChanged();
+      } else {
+        updateTimeBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.mojo.core.Timestamp update_time = 15;</code>
+     */
+    public Builder clearUpdateTime() {
+      if (updateTimeBuilder_ == null) {
+        updateTime_ = null;
+        onChanged();
+      } else {
+        updateTime_ = null;
+        updateTimeBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.mojo.core.Timestamp update_time = 15;</code>
+     */
+    public org.mojolang.mojo.core.Timestamp.Builder getUpdateTimeBuilder() {
+      
+      onChanged();
+      return getUpdateTimeFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.mojo.core.Timestamp update_time = 15;</code>
+     */
+    public org.mojolang.mojo.core.TimestampOrBuilder getUpdateTimeOrBuilder() {
+      if (updateTimeBuilder_ != null) {
+        return updateTimeBuilder_.getMessageOrBuilder();
+      } else {
+        return updateTime_ == null ?
+            org.mojolang.mojo.core.Timestamp.getDefaultInstance() : updateTime_;
+      }
+    }
+    /**
+     * <code>.mojo.core.Timestamp update_time = 15;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        org.mojolang.mojo.core.Timestamp, org.mojolang.mojo.core.Timestamp.Builder, org.mojolang.mojo.core.TimestampOrBuilder> 
+        getUpdateTimeFieldBuilder() {
+      if (updateTimeBuilder_ == null) {
+        updateTimeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            org.mojolang.mojo.core.Timestamp, org.mojolang.mojo.core.Timestamp.Builder, org.mojolang.mojo.core.TimestampOrBuilder>(
+                getUpdateTime(),
+                getParentForChildren(),
+                isClean());
+        updateTime_ = null;
+      }
+      return updateTimeBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(
