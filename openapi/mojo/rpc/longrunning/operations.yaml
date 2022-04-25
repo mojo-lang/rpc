@@ -125,7 +125,7 @@ components:
 
             SAML assertions are similarly specified, but with an identity provider
             dependent structure.
-          title: object
+          title: Object
           type: object
         presenter:
           description: |-
@@ -403,13 +403,6 @@ components:
             If `done` == `false`, neither `error` nor `response` is set.
             If `done` == `true`, exactly one of `error` or `response` is set.
             The error result of the operation in case of failure or cancellation.
-          oneOf:
-          - type: "null"
-          - type: boolean
-          - type: number
-          - type: string
-          - type: array
-          - type: object
           properties:
             code:
               format: ErrorCode
@@ -440,9 +433,6 @@ components:
             The server-assigned name, which is only unique within the same service that
             originally returns it. If you use the default HTTP mapping, the
             `name` should be a resource name ending with `operations/{unique_id}`.
-          type: string
-        parentName:
-          description: The parent operation name
           type: string
         response:
           description: |-

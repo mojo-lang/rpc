@@ -16,7 +16,6 @@ option java_package = "org.mojo-lang.mojo.rpc.longrunning";
 
 message Operation {
     string name = 1 [(mojo.key)=""];
-    string parent_name = 10 [(mojo.db_index)=""];
     mojo.core.Any metadata = 2;
     bool done = 3;
     mojo.core.Error error = 4;

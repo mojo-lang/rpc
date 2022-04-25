@@ -17,7 +17,6 @@ private static final long serialVersionUID = 0L;
   }
   private Operation() {
     name_ = "";
-    parentName_ = "";
   }
 
   @java.lang.Override
@@ -100,12 +99,6 @@ private static final long serialVersionUID = 0L;
 
             break;
           }
-          case 82: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            parentName_ = s;
-            break;
-          }
           case 122: {
             org.mojolang.mojo.core.Timestamp.Builder subBuilder = null;
             if (updateTime_ != null) {
@@ -183,44 +176,6 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
       name_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int PARENT_NAME_FIELD_NUMBER = 10;
-  private volatile java.lang.Object parentName_;
-  /**
-   * <code>string parent_name = 10 [(.mojo.db_index) = ""];</code>
-   * @return The parentName.
-   */
-  @java.lang.Override
-  public java.lang.String getParentName() {
-    java.lang.Object ref = parentName_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      parentName_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string parent_name = 10 [(.mojo.db_index) = ""];</code>
-   * @return The bytes for parentName.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getParentNameBytes() {
-    java.lang.Object ref = parentName_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      parentName_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -371,9 +326,6 @@ private static final long serialVersionUID = 0L;
     if (response_ != null) {
       output.writeMessage(5, getResponse());
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(parentName_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 10, parentName_);
-    }
     if (updateTime_ != null) {
       output.writeMessage(15, getUpdateTime());
     }
@@ -405,9 +357,6 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(5, getResponse());
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(parentName_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, parentName_);
-    }
     if (updateTime_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(15, getUpdateTime());
@@ -429,8 +378,6 @@ private static final long serialVersionUID = 0L;
 
     if (!getName()
         .equals(other.getName())) return false;
-    if (!getParentName()
-        .equals(other.getParentName())) return false;
     if (hasMetadata() != other.hasMetadata()) return false;
     if (hasMetadata()) {
       if (!getMetadata()
@@ -466,8 +413,6 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + NAME_FIELD_NUMBER;
     hash = (53 * hash) + getName().hashCode();
-    hash = (37 * hash) + PARENT_NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getParentName().hashCode();
     if (hasMetadata()) {
       hash = (37 * hash) + METADATA_FIELD_NUMBER;
       hash = (53 * hash) + getMetadata().hashCode();
@@ -622,8 +567,6 @@ private static final long serialVersionUID = 0L;
       super.clear();
       name_ = "";
 
-      parentName_ = "";
-
       if (metadataBuilder_ == null) {
         metadata_ = null;
       } else {
@@ -677,7 +620,6 @@ private static final long serialVersionUID = 0L;
     public org.mojo-lang.mojo.rpc.longrunning.Operation buildPartial() {
       org.mojo-lang.mojo.rpc.longrunning.Operation result = new org.mojo-lang.mojo.rpc.longrunning.Operation(this);
       result.name_ = name_;
-      result.parentName_ = parentName_;
       if (metadataBuilder_ == null) {
         result.metadata_ = metadata_;
       } else {
@@ -749,10 +691,6 @@ private static final long serialVersionUID = 0L;
       if (other == org.mojo-lang.mojo.rpc.longrunning.Operation.getDefaultInstance()) return this;
       if (!other.getName().isEmpty()) {
         name_ = other.name_;
-        onChanged();
-      }
-      if (!other.getParentName().isEmpty()) {
-        parentName_ = other.parentName_;
         onChanged();
       }
       if (other.hasMetadata()) {
@@ -871,82 +809,6 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       name_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object parentName_ = "";
-    /**
-     * <code>string parent_name = 10 [(.mojo.db_index) = ""];</code>
-     * @return The parentName.
-     */
-    public java.lang.String getParentName() {
-      java.lang.Object ref = parentName_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        parentName_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string parent_name = 10 [(.mojo.db_index) = ""];</code>
-     * @return The bytes for parentName.
-     */
-    public com.google.protobuf.ByteString
-        getParentNameBytes() {
-      java.lang.Object ref = parentName_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        parentName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string parent_name = 10 [(.mojo.db_index) = ""];</code>
-     * @param value The parentName to set.
-     * @return This builder for chaining.
-     */
-    public Builder setParentName(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      parentName_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string parent_name = 10 [(.mojo.db_index) = ""];</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearParentName() {
-      
-      parentName_ = getDefaultInstance().getParentName();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string parent_name = 10 [(.mojo.db_index) = ""];</code>
-     * @param value The bytes for parentName to set.
-     * @return This builder for chaining.
-     */
-    public Builder setParentNameBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      parentName_ = value;
       onChanged();
       return this;
     }

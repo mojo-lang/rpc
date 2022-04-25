@@ -20,18 +20,6 @@ public interface OperationOrBuilder extends
       getNameBytes();
 
   /**
-   * <code>string parent_name = 10 [(.mojo.db_index) = ""];</code>
-   * @return The parentName.
-   */
-  java.lang.String getParentName();
-  /**
-   * <code>string parent_name = 10 [(.mojo.db_index) = ""];</code>
-   * @return The bytes for parentName.
-   */
-  com.google.protobuf.ByteString
-      getParentNameBytes();
-
-  /**
    * <code>.mojo.core.Any metadata = 2;</code>
    * @return Whether the metadata field is set.
    */

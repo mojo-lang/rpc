@@ -31,16 +31,15 @@ public final class OperationProto {
       "\n$mojo/rpc/longrunning/operation.proto\022\024" +
       "mojo.rpc.longrunning\032\023mojo/core/any.prot" +
       "o\032\025mojo/core/error.proto\032\024mojo/core/time" +
-      ".proto\032\017mojo/mojo.proto\"\330\001\n\tOperation\022\022\n" +
-      "\004name\030\001 \001(\tB\004\322\317$\000\022\031\n\013parent_name\030\n \001(\tB\004" +
-      "\212\326$\000\022 \n\010metadata\030\002 \001(\0132\016.mojo.core.Any\022\014" +
-      "\n\004done\030\003 \001(\010\022\037\n\005error\030\004 \001(\0132\020.mojo.core." +
-      "Error\022 \n\010response\030\005 \001(\0132\016.mojo.core.Any\022" +
-      ")\n\013update_time\030\017 \001(\0132\024.mojo.core.Timesta" +
-      "mpBx\n\"org.mojo-lang.mojo.rpc.longrunning" +
-      "B\016OperationProtoP\001Z@github.com/mojo-lang" +
-      "/rpc/go/pkg/mojo/rpc/longrunning;longrun" +
-      "ningb\006proto3"
+      ".proto\032\017mojo/mojo.proto\"\275\001\n\tOperation\022\022\n" +
+      "\004name\030\001 \001(\tB\004\322\317$\000\022 \n\010metadata\030\002 \001(\0132\016.mo" +
+      "jo.core.Any\022\014\n\004done\030\003 \001(\010\022\037\n\005error\030\004 \001(\013" +
+      "2\020.mojo.core.Error\022 \n\010response\030\005 \001(\0132\016.m" +
+      "ojo.core.Any\022)\n\013update_time\030\017 \001(\0132\024.mojo" +
+      ".core.TimestampBx\n\"org.mojo-lang.mojo.rp" +
+      "c.longrunningB\016OperationProtoP\001Z@github." +
+      "com/mojo-lang/rpc/go/pkg/mojo/rpc/longru" +
+      "nning;longrunningb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -55,10 +54,9 @@ public final class OperationProto {
     internal_static_mojo_rpc_longrunning_Operation_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mojo_rpc_longrunning_Operation_descriptor,
-        new java.lang.String[] { "Name", "ParentName", "Metadata", "Done", "Error", "Response", "UpdateTime", });
+        new java.lang.String[] { "Name", "Metadata", "Done", "Error", "Response", "UpdateTime", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
-    registry.add(com.google.protobuf.MojoProtos.dbIndex);
     registry.add(com.google.protobuf.MojoProtos.key);
     com.google.protobuf.Descriptors.FileDescriptor
         .internalUpdateFileDescriptor(descriptor, registry);
