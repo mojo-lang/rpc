@@ -1,5 +1,62 @@
 components:
   schemas:
+    mojo.core.Any:
+      description: |
+        Any Object
+
+        `Any` contains an arbitrary serialized message along with a URL that describes the type of the serialized message.
+      properties:
+        '@type':
+          title: mojo.core.String
+          type: string
+      required:
+      - '@type'
+      title: mojo.core.Any
+      type: object
+    mojo.core.Duration:
+      description: |-
+        A Duration represents a signed, fixed-length span of time represented as a count of seconds and
+        fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or "month".
+        It is related to Timestamp in that the difference between two Timestamp values is a Duration and
+        it can be added or subtracted from a Timestamp. Range is approximately +-10,000 years.
+      format: Duration
+      title: mojo.core.Duration
+      type: string
+    mojo.core.Error:
+      description: |
+        @lang('zh-CN')
+      properties:
+        code:
+          description: The error code
+          format: ErrorCode
+          title: mojo.core.ErrorCode
+          type: string
+        details:
+          description: |-
+            A list of messages that carry the error details.  There is a common set of
+            message types for APIs to use.
+          items:
+            $ref: '#/components/schemas/mojo.core.Any'
+          title: mojo.core.Array
+          type: array
+        message:
+          description: |-
+            A developer-facing error message, which should be in English. Any
+            user-facing error message should be localized and sent in the
+            [google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client.
+          title: mojo.core.String
+          type: string
+      title: mojo.core.Error
+      type: object
+    mojo.core.Object:
+      description: Object type
+      title: mojo.core.Object
+      type: object
+    mojo.core.Timestamp:
+      description: ""
+      format: Timestamp
+      title: mojo.core.Timestamp
+      type: string
     mojo.rpc.AttributeContext:
       description: |-
         An attribute is a piece of metadata that describes an activity on a network
@@ -26,8 +83,8 @@ components:
           description: Supports extensions for advanced use cases, such as logs and
             metrics.
           items:
-            title: Any
-            type: object
+            $ref: '#/components/schemas/mojo.core.Any'
+          title: mojo.core.Array
           type: array
         origin:
           $ref: '#/components/schemas/mojo.rpc.AttributeContext.Peer'
@@ -52,22 +109,26 @@ components:
             The API operation name. For gRPC requests, it is the fully qualified API
             method name, such as "google.pubsub.v1.Publisher.Publish". For OpenAPI
             requests, it is the `operationId`, such as "getPet".
+          title: mojo.core.String
           type: string
         protocol:
           description: |-
             The API protocol used for sending the request, such as "http", "https",
             "grpc", or "internal".
+          title: mojo.core.String
           type: string
         service:
           description: |-
             The API service name. It is a logical identifier for a networked API,
             such as "pubsub.googleapis.com". The naming syntax depends on the
             API management system being used for handling the request.
+          title: mojo.core.String
           type: string
         version:
           description: |-
             The API version associated with the API operation above, such as "v1" or
             "v1alpha1".
+          title: mojo.core.String
           type: string
       title: mojo.rpc.AttributeContext.Api
       type: object
@@ -87,7 +148,9 @@ components:
             Example:
             "//accesscontextmanager.googleapis.com/accessPolicies/MY_POLICY_ID/accessLevels/MY_LEVEL"
           items:
+            title: mojo.core.String
             type: string
+          title: mojo.core.Array
           type: array
         audiences:
           description: |-
@@ -106,33 +169,19 @@ components:
             Consult the documentation for the credential issuer to determine the
             information provided.
           items:
+            title: mojo.core.String
             type: string
+          title: mojo.core.Array
           type: array
         claims:
-          description: |-
-            Structured claims presented with the credential. JWTs include
-            `{key: value}` pairs for standard and private claims. The following
-            is a subset of the standard required and optional claims that would
-            typically be presented for a Google-based JWT:
-
-               {'iss': 'accounts.google.com',
-                'sub': '113289723416554971153',
-                'aud': ['123456789012', 'pubsub.googleapis.com'],
-                'azp': '123456789012.apps.googleusercontent.com',
-                'email': 'jsmith@example.com',
-                'iat': 1353601026,
-                'exp': 1353604926}
-
-            SAML assertions are similarly specified, but with an identity provider
-            dependent structure.
-          title: Object
-          type: object
+          $ref: '#/components/schemas/mojo.core.Object'
         presenter:
           description: |-
             The authorized presenter of the credential. Reflects the optional
             Authorized Presenter (`azp`) claim within a JWT or the
             OAuth client id. For example, a Google Cloud Platform client id looks
             as follows: "123456789012.apps.googleusercontent.com".
+          title: mojo.core.String
           type: string
         principal:
           description: |-
@@ -141,6 +190,7 @@ components:
             delimited, with `/` percent-encoded within the subject fragment. For
             Google accounts, the principal format is:
             "https://accounts.google.com/{id}"
+          title: mojo.core.String
           type: string
       title: mojo.rpc.AttributeContext.Auth
       type: object
@@ -153,27 +203,33 @@ components:
       properties:
         ip:
           description: The IP address of the peer.
+          title: mojo.core.String
           type: string
         labels:
           additionalProperties:
+            title: mojo.core.String
             type: string
           description: The labels associated with the peer.
+          title: mojo.core.Map
           type: object
         port:
           description: The network port of the peer.
-          format: int64
+          format: Int64
+          title: mojo.core.Int64
           type: integer
         principal:
           description: |-
             The identity of this peer. Similar to `Request.auth.principal`, but
             relative to the peer instead of the request. For example, the
             idenity associated with a load balancer that forwared the request.
+          title: mojo.core.String
           type: string
         regionCode:
           description: |-
             The CLDR country/region code associated with the above IP address.
             If the IP address is private, the `region_code` should reflect the
             physical location where this peer is running.
+          title: mojo.core.String
           type: string
       title: mojo.rpc.AttributeContext.Peer
       type: object
@@ -187,26 +243,32 @@ components:
           $ref: '#/components/schemas/mojo.rpc.AttributeContext.Auth'
         headers:
           additionalProperties:
+            title: mojo.core.String
             type: string
           description: |-
             The HTTP request headers. If multiple headers share the same key, they
             must be merged according to the HTTP spec. All header keys must be
             lowercased, because HTTP header keys are case-insensitive.
+          title: mojo.core.Map
           type: object
         host:
           description: The HTTP request `Host` header value.
+          title: mojo.core.String
           type: string
         id:
           description: |-
             The unique ID for a request, which can be propagated to downstream
             systems. The ID should have low probability of collision
             within a single day for a specific service.
+          title: mojo.core.String
           type: string
         method:
           description: The HTTP request method, such as `GET`, `POST`.
+          title: mojo.core.String
           type: string
         path:
           description: The HTTP URL path.
+          title: mojo.core.String
           type: string
         protocol:
           description: |-
@@ -214,31 +276,31 @@ components:
             "spdy/3", "h2", "h2c", "webrtc", "tcp", "udp", "quic". See
             https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids
             for details.
+          title: mojo.core.String
           type: string
         query:
           description: |-
             The HTTP URL query in the format of `name1=value1&name2=value2`, as it
             appears in the first line of the HTTP request. No decoding is performed.
+          title: mojo.core.String
           type: string
         reason:
           description: |-
             A special parameter for request reason. It is used by security systems
             to associate auditing information with a request.
+          title: mojo.core.String
           type: string
         scheme:
           description: The HTTP URL scheme, such as `http` and `https`.
+          title: mojo.core.String
           type: string
         size:
           description: The HTTP request size in bytes. If unknown, it must be -1.
-          format: int64
+          format: Int64
+          title: mojo.core.Int64
           type: integer
         time:
-          description: |-
-            The timestamp when the `destination` service receives the last byte of
-            the request.
-          format: DateTime
-          title: DateTime
-          type: string
+          $ref: '#/components/schemas/mojo.core.Timestamp'
       title: mojo.rpc.AttributeContext.Request
       type: object
     mojo.rpc.AttributeContext.Resource:
@@ -249,6 +311,7 @@ components:
       properties:
         annotations:
           additionalProperties:
+            title: mojo.core.String
             type: string
           description: |-
             Annotations is an unstructured key-value map stored with a resource that
@@ -256,36 +319,31 @@ components:
             They are not queryable and should be preserved when modifying objects.
 
             More info: https://kubernetes.io/docs/user-guide/annotations
+          title: mojo.core.Map
           type: object
         createTime:
-          description: |-
-            Output only. The timestamp when the resource was created. This may
-            be either the time creation was initiated or when it was completed.
-          format: DateTime
-          title: DateTime
-          type: string
+          $ref: '#/components/schemas/mojo.core.Timestamp'
         deleteTime:
-          description: |-
-            Output only. The timestamp when the resource was deleted.
-            If the resource is not deleted, this must be empty.
-          format: DateTime
-          title: DateTime
-          type: string
+          $ref: '#/components/schemas/mojo.core.Timestamp'
         displayName:
           description: Mutable. The display name set by clients. Must be <= 63 characters.
+          title: mojo.core.String
           type: string
         etag:
           description: |-
             Output only. An opaque value that uniquely identifies a version or
             generation of a resource. It can be used to confirm that the client
             and server agree on the ordering of a resource being written.
+          title: mojo.core.String
           type: string
         labels:
           additionalProperties:
+            title: mojo.core.String
             type: string
           description: |-
             The labels or tags on the resource, such as AWS resource tags and
             Kubernetes resource labels.
+          title: mojo.core.Map
           type: object
         location:
           description: |-
@@ -297,6 +355,7 @@ components:
             APIs, such as `us-east1`, `aws-us-east-1`, and `azure-eastus2`. The
             semantics of `location` is identical to the
             `cloud.googleapis.com/location` label used by some Google Cloud APIs.
+          title: mojo.core.String
           type: string
         name:
           description: |-
@@ -312,12 +371,14 @@ components:
                 `https://pubsub.googleapis.com/v1/projects/123/topics/news-feed`.
 
             See https://cloud.google.com/apis/design/resource_names for details.
+          title: mojo.core.String
           type: string
         service:
           description: |-
             The name of the service that this resource belongs to, such as
             `pubsub.googleapis.com`. The service may be different from the DNS
             hostname that actually serves the request.
+          title: mojo.core.String
           type: string
         type:
           description: |-
@@ -325,6 +386,7 @@ components:
             different platforms define their resources differently.
 
             For Google APIs, the type format must be "{service}/{kind}".
+          title: mojo.core.String
           type: string
         uid:
           description: |-
@@ -333,15 +395,10 @@ components:
             typically generated by the server on successful creation of a resource
             and must not be changed. UID is used to uniquely identify resources
             with resource name reuses. This should be a UUID4.
+          title: mojo.core.String
           type: string
         updateTime:
-          description: |-
-            Output only. The timestamp when the resource was last updated. Any
-            change to the resource made by users must refresh this value.
-            Changes to a resource made by the service should refresh this value.
-          format: DateTime
-          title: DateTime
-          type: string
+          $ref: '#/components/schemas/mojo.core.Timestamp'
       title: mojo.rpc.AttributeContext.Resource
       type: object
     mojo.rpc.AttributeContext.Response:
@@ -350,37 +407,29 @@ components:
         generally models semantics of an HTTP response.
       properties:
         backendLatency:
-          description: |-
-            The length of time it takes the backend service to fully respond to a
-            request. Measured from when the destination service starts to send the
-            request to the backend until when the destination service receives the
-            complete response from the backend.
-          format: Duration
-          title: Duration
-          type: string
+          $ref: '#/components/schemas/mojo.core.Duration'
         code:
           description: The HTTP response status code, such as `200` and `404`.
-          format: int64
+          format: Int64
+          title: mojo.core.Int64
           type: integer
         headers:
           additionalProperties:
+            title: mojo.core.String
             type: string
           description: |-
             The HTTP response headers. If multiple headers share the same key, they
             must be merged according to HTTP spec. All header keys must be
             lowercased, because HTTP header keys are case-insensitive.
+          title: mojo.core.Map
           type: object
         size:
           description: The HTTP response size in bytes. If unknown, it must be -1.
-          format: int64
+          format: Int64
+          title: mojo.core.Int64
           type: integer
         time:
-          description: |-
-            The timestamp when the `destination` service sends the last byte of
-            the response.
-          format: DateTime
-          title: DateTime
-          type: string
+          $ref: '#/components/schemas/mojo.core.Timestamp'
       title: mojo.rpc.AttributeContext.Response
       type: object
     mojo.rpc.Message:
@@ -396,62 +445,23 @@ components:
             If the value is `false`, it means the operation is still in progress.
             If `true`, the operation is completed, and either `error` or `response` is
             available.
+          title: mojo.core.Bool
           type: boolean
         error:
-          description: |-
-            The operation result, which can be either an `error` or a valid `response`.
-            If `done` == `false`, neither `error` nor `response` is set.
-            If `done` == `true`, exactly one of `error` or `response` is set.
-            The error result of the operation in case of failure or cancellation.
-          properties:
-            code:
-              format: ErrorCode
-              title: ErrorCode
-              type: string
-            details:
-              description: A list of messages that carry the error details.  There
-                is a common set of message types for APIs to use.
-              items:
-                title: Any
-                type: object
-              type: array
-            message:
-              description: A developer-facing error message, which should be in English.
-              type: string
-          title: Error
-          type: object
+          $ref: '#/components/schemas/mojo.core.Error'
         metadata:
-          description: |-
-            Service-specific metadata associated with the operation.  It typically
-            contains progress information and common metadata such as create time.
-            Some services might not provide such metadata.  Any method that returns a
-            long-running operation should document the metadata type, if any.
-          title: Any
-          type: object
+          $ref: '#/components/schemas/mojo.core.Any'
         name:
           description: |-
             The server-assigned name, which is only unique within the same service that
             originally returns it. If you use the default HTTP mapping, the
             `name` should be a resource name ending with `operations/{unique_id}`.
+          title: mojo.core.String
           type: string
         response:
-          description: |-
-            The normal response of the operation in case of success.  If the original
-            method returns no data on success, such as `Delete`, the response is
-            `google.protobuf.Empty`.  If the original method is standard
-            `Get`/`Create`/`Update`, the response should be the resource.  For other
-            methods, the response should have the type `XxxResponse`, where `Xxx`
-            is the original method name.  For example, if the original method name
-            is `TakeSnapshot()`, the inferred response type is
-            `TakeSnapshotResponse`.
-          title: Any
-          type: object
+          $ref: '#/components/schemas/mojo.core.Any'
         updateTime:
-          description: the updated timestamp for the operation when update the progression
-            information.
-          format: DateTime
-          title: DateTime
-          type: string
+          $ref: '#/components/schemas/mojo.core.Timestamp'
       title: mojo.rpc.longrunning.Operation
       type: object
 info:
@@ -481,25 +491,30 @@ paths:
         in: query
         name: parent
         schema:
+          title: mojo.core.String
           type: string
       - description: The standard list filter.
         in: query
         name: filter
         schema:
+          title: mojo.core.String
           type: string
       - in: query
         name: page_size
         schema:
-          format: int32
+          format: Int32
+          title: mojo.core.Int32
           type: integer
       - in: query
         name: page_token
         schema:
+          title: mojo.core.String
           type: string
       - in: query
         name: skip
         schema:
-          format: int32
+          format: Int32
+          title: mojo.core.Int32
           type: integer
       responses:
         "200":
@@ -508,6 +523,7 @@ paths:
               schema:
                 items:
                   $ref: '#/components/schemas/mojo.rpc.longrunning.Operation'
+                title: mojo.core.Array
                 type: array
           description: OK
       summary: Lists operations that match the specified filter in the request. If
@@ -521,6 +537,7 @@ paths:
         in: path
         name: name
         schema:
+          title: mojo.core.String
           type: string
       responses:
         "200":
@@ -536,6 +553,7 @@ paths:
         in: path
         name: name
         schema:
+          title: mojo.core.String
           type: string
       responses:
         "200":
@@ -556,6 +574,7 @@ paths:
         in: path
         name: name
         schema:
+          title: mojo.core.String
           type: string
       responses:
         "200":
@@ -578,6 +597,7 @@ paths:
         in: path
         name: name
         schema:
+          title: mojo.core.String
           type: string
       - description: |-
           The maximum duration to wait before timing out. If left blank, the wait
@@ -586,9 +606,7 @@ paths:
         in: query
         name: timeout
         schema:
-          format: Duration
-          title: Duration
-          type: string
+          $ref: '#/components/schemas/mojo.core.Duration'
       responses:
         "200":
           content:

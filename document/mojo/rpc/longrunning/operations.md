@@ -46,41 +46,42 @@ GET /operation/v1/{{service}}/operations
 |---|---|---|---|---|---|
 | `parent` | `string` |  | 否 |  | The name of the operation's parent resource. |
 | `filter` | `string` |  | 否 |  | The standard list filter. |
-| `page_size` | `integer` | `int32` | 否 |  |  |
+| `page_size` | `integer` | `Int32` | 否 |  |  |
 | `page_token` | `string` |  | 否 |  |  |
-| `skip` | `integer` | `int32` | 否 |  |  |
+| `skip` | `integer` | `Int32` | 否 |  |  |
 
 
 ### 返回值
 
 #### 返回对象
-| 类型 | 说明 |
+| type | description |
 |---|---|
-| `Array<mojo.rpc.longrunning.Operation>` |
+| `Array<mojo.rpc.longrunning.Operation>` |  |
 
 
-#### `Any`
-| 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
+#### `mojo.core.Any`
+| field | type | format | required | default | description |
 |---|---|---|---|---|---|
+| `@type` | `string` |  | Y |  |
 
 
-#### `Error`
-| 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
+#### `mojo.core.Error`
+| field | type | format | required | default | description |
 |---|---|---|---|---|---|
-| `code` | `string` | `ErrorCode` | 否 |  |
-| `message` | `string` |  | 否 |  | A developer-facing error message, which should be in English. |
-| `details` | `Array<Any>` |  | 否 |  | A list of messages that carry the error details.  There is a common set of message types for APIs to use. |
+| `code` | `string` | `ErrorCode` | N |  | The error code |
+| `message` | `string` |  | N |  | A developer-facing error message, which should be in English. Anyuser-facing error message should be localized and sent in the[google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client. |
+| `details` | `Array<mojo.core.Any>` |  | N |  | A list of messages that carry the error details.  There is a common set ofmessage types for APIs to use. |
 
 
 #### `mojo.rpc.longrunning.Operation`
-| 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
+| field | type | format | required | default | description |
 |---|---|---|---|---|---|
-| `name` | `string` |  | 否 |  | The server-assigned name, which is only unique within the same service thatoriginally returns it. If you use the default HTTP mapping, the`name` should be a resource name ending with `operations/{unique_id}`. |
-| `metadata` | `Any` |  | 否 |  | Service-specific metadata associated with the operation.  It typicallycontains progress information and common metadata such as create time.Some services might not provide such metadata.  Any method that returns along-running operation should document the metadata type, if any. |
-| `done` | `boolean` |  | 否 |  | If the value is `false`, it means the operation is still in progress.If `true`, the operation is completed, and either `error` or `response` isavailable. |
-| `error` | `Error` |  | 否 |  | The operation result, which can be either an `error` or a valid `response`.If `done` == `false`, neither `error` nor `response` is set.If `done` == `true`, exactly one of `error` or `response` is set.The error result of the operation in case of failure or cancellation. |
-| `response` | `Any` |  | 否 |  | The normal response of the operation in case of success.  If the originalmethod returns no data on success, such as `Delete`, the response is`google.protobuf.Empty`.  If the original method is standard`Get`/`Create`/`Update`, the response should be the resource.  For othermethods, the response should have the type `XxxResponse`, where `Xxx`is the original method name.  For example, if the original method nameis `TakeSnapshot()`, the inferred response type is`TakeSnapshotResponse`. |
-| `updateTime` | `string` | `DateTime` | 否 |  | the updated timestamp for the operation when update the progression information. |
+| `name` | `string` |  | N |  | The server-assigned name, which is only unique within the same service thatoriginally returns it. If you use the default HTTP mapping, the`name` should be a resource name ending with `operations/{unique_id}`. |
+| `metadata` | `mojo.core.Any` |  | N |  | Service-specific metadata associated with the operation.  It typicallycontains progress information and common metadata such as create time.Some services might not provide such metadata.  Any method that returns along-running operation should document the metadata type, if any. |
+| `done` | `boolean` |  | N |  | If the value is `false`, it means the operation is still in progress.If `true`, the operation is completed, and either `error` or `response` isavailable. |
+| `error` | `mojo.core.Error` |  | N |  | The operation result, which can be either an `error` or a valid `response`.If `done` == `false`, neither `error` nor `response` is set.If `done` == `true`, exactly one of `error` or `response` is set.The error result of the operation in case of failure or cancellation. |
+| `response` | `mojo.core.Any` |  | N |  | The normal response of the operation in case of success.  If the originalmethod returns no data on success, such as `Delete`, the response is`google.protobuf.Empty`.  If the original method is standard`Get`/`Create`/`Update`, the response should be the resource.  For othermethods, the response should have the type `XxxResponse`, where `Xxx`is the original method name.  For example, if the original method nameis `TakeSnapshot()`, the inferred response type is`TakeSnapshotResponse`. |
+| `updateTime` | `string` | `Timestamp` | N |  | the updated timestamp for the operation when update the progression information. |
 
 
 ## Gets the latest state of a long-running operation.  Clients can use thismethod to poll the operation result at intervals as recommended by the APIservice.
@@ -102,27 +103,28 @@ GET /operation/v1/{{service}}/operations/{name}
 ### 返回值
 
 #### 返回对象
-| 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
+| field | type | format | required | default | description |
 |---|---|---|---|---|---|
-| `name` | `string` |  | 否 |  | The server-assigned name, which is only unique within the same service thatoriginally returns it. If you use the default HTTP mapping, the`name` should be a resource name ending with `operations/{unique_id}`. |
-| `metadata` | `Any` |  | 否 |  | Service-specific metadata associated with the operation.  It typicallycontains progress information and common metadata such as create time.Some services might not provide such metadata.  Any method that returns along-running operation should document the metadata type, if any. |
-| `done` | `boolean` |  | 否 |  | If the value is `false`, it means the operation is still in progress.If `true`, the operation is completed, and either `error` or `response` isavailable. |
-| `error` | `Error` |  | 否 |  | The operation result, which can be either an `error` or a valid `response`.If `done` == `false`, neither `error` nor `response` is set.If `done` == `true`, exactly one of `error` or `response` is set.The error result of the operation in case of failure or cancellation. |
-| `response` | `Any` |  | 否 |  | The normal response of the operation in case of success.  If the originalmethod returns no data on success, such as `Delete`, the response is`google.protobuf.Empty`.  If the original method is standard`Get`/`Create`/`Update`, the response should be the resource.  For othermethods, the response should have the type `XxxResponse`, where `Xxx`is the original method name.  For example, if the original method nameis `TakeSnapshot()`, the inferred response type is`TakeSnapshotResponse`. |
-| `updateTime` | `string` | `DateTime` | 否 |  | the updated timestamp for the operation when update the progression information. |
+| `name` | `string` |  | N |  | The server-assigned name, which is only unique within the same service thatoriginally returns it. If you use the default HTTP mapping, the`name` should be a resource name ending with `operations/{unique_id}`. |
+| `metadata` | `mojo.core.Any` |  | N |  | Service-specific metadata associated with the operation.  It typicallycontains progress information and common metadata such as create time.Some services might not provide such metadata.  Any method that returns along-running operation should document the metadata type, if any. |
+| `done` | `boolean` |  | N |  | If the value is `false`, it means the operation is still in progress.If `true`, the operation is completed, and either `error` or `response` isavailable. |
+| `error` | `mojo.core.Error` |  | N |  | The operation result, which can be either an `error` or a valid `response`.If `done` == `false`, neither `error` nor `response` is set.If `done` == `true`, exactly one of `error` or `response` is set.The error result of the operation in case of failure or cancellation. |
+| `response` | `mojo.core.Any` |  | N |  | The normal response of the operation in case of success.  If the originalmethod returns no data on success, such as `Delete`, the response is`google.protobuf.Empty`.  If the original method is standard`Get`/`Create`/`Update`, the response should be the resource.  For othermethods, the response should have the type `XxxResponse`, where `Xxx`is the original method name.  For example, if the original method nameis `TakeSnapshot()`, the inferred response type is`TakeSnapshotResponse`. |
+| `updateTime` | `string` | `Timestamp` | N |  | the updated timestamp for the operation when update the progression information. |
 
 
-#### `Any`
-| 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
+#### `mojo.core.Any`
+| field | type | format | required | default | description |
 |---|---|---|---|---|---|
+| `@type` | `string` |  | Y |  |
 
 
-#### `Error`
-| 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
+#### `mojo.core.Error`
+| field | type | format | required | default | description |
 |---|---|---|---|---|---|
-| `code` | `string` | `ErrorCode` | 否 |  |
-| `message` | `string` |  | 否 |  | A developer-facing error message, which should be in English. |
-| `details` | `Array<Any>` |  | 否 |  | A list of messages that carry the error details.  There is a common set of message types for APIs to use. |
+| `code` | `string` | `ErrorCode` | N |  | The error code |
+| `message` | `string` |  | N |  | A developer-facing error message, which should be in English. Anyuser-facing error message should be localized and sent in the[google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client. |
+| `details` | `Array<mojo.core.Any>` |  | N |  | A list of messages that carry the error details.  There is a common set ofmessage types for APIs to use. |
 
 
 ## Deletes a long-running operation. This method indicates that the client isno longer interested in the operation result. It does not cancel theoperation. If the server doesn't support this method, it returns`google.rpc.Code.UNIMPLEMENTED`.
@@ -194,24 +196,25 @@ If RPC context deadline is also specified, the shorter one will be used. |
 ### 返回值
 
 #### 返回对象
-| 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
+| field | type | format | required | default | description |
 |---|---|---|---|---|---|
-| `name` | `string` |  | 否 |  | The server-assigned name, which is only unique within the same service thatoriginally returns it. If you use the default HTTP mapping, the`name` should be a resource name ending with `operations/{unique_id}`. |
-| `metadata` | `Any` |  | 否 |  | Service-specific metadata associated with the operation.  It typicallycontains progress information and common metadata such as create time.Some services might not provide such metadata.  Any method that returns along-running operation should document the metadata type, if any. |
-| `done` | `boolean` |  | 否 |  | If the value is `false`, it means the operation is still in progress.If `true`, the operation is completed, and either `error` or `response` isavailable. |
-| `error` | `Error` |  | 否 |  | The operation result, which can be either an `error` or a valid `response`.If `done` == `false`, neither `error` nor `response` is set.If `done` == `true`, exactly one of `error` or `response` is set.The error result of the operation in case of failure or cancellation. |
-| `response` | `Any` |  | 否 |  | The normal response of the operation in case of success.  If the originalmethod returns no data on success, such as `Delete`, the response is`google.protobuf.Empty`.  If the original method is standard`Get`/`Create`/`Update`, the response should be the resource.  For othermethods, the response should have the type `XxxResponse`, where `Xxx`is the original method name.  For example, if the original method nameis `TakeSnapshot()`, the inferred response type is`TakeSnapshotResponse`. |
-| `updateTime` | `string` | `DateTime` | 否 |  | the updated timestamp for the operation when update the progression information. |
+| `name` | `string` |  | N |  | The server-assigned name, which is only unique within the same service thatoriginally returns it. If you use the default HTTP mapping, the`name` should be a resource name ending with `operations/{unique_id}`. |
+| `metadata` | `mojo.core.Any` |  | N |  | Service-specific metadata associated with the operation.  It typicallycontains progress information and common metadata such as create time.Some services might not provide such metadata.  Any method that returns along-running operation should document the metadata type, if any. |
+| `done` | `boolean` |  | N |  | If the value is `false`, it means the operation is still in progress.If `true`, the operation is completed, and either `error` or `response` isavailable. |
+| `error` | `mojo.core.Error` |  | N |  | The operation result, which can be either an `error` or a valid `response`.If `done` == `false`, neither `error` nor `response` is set.If `done` == `true`, exactly one of `error` or `response` is set.The error result of the operation in case of failure or cancellation. |
+| `response` | `mojo.core.Any` |  | N |  | The normal response of the operation in case of success.  If the originalmethod returns no data on success, such as `Delete`, the response is`google.protobuf.Empty`.  If the original method is standard`Get`/`Create`/`Update`, the response should be the resource.  For othermethods, the response should have the type `XxxResponse`, where `Xxx`is the original method name.  For example, if the original method nameis `TakeSnapshot()`, the inferred response type is`TakeSnapshotResponse`. |
+| `updateTime` | `string` | `Timestamp` | N |  | the updated timestamp for the operation when update the progression information. |
 
 
-#### `Any`
-| 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
+#### `mojo.core.Any`
+| field | type | format | required | default | description |
 |---|---|---|---|---|---|
+| `@type` | `string` |  | Y |  |
 
 
-#### `Error`
-| 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
+#### `mojo.core.Error`
+| field | type | format | required | default | description |
 |---|---|---|---|---|---|
-| `code` | `string` | `ErrorCode` | 否 |  |
-| `message` | `string` |  | 否 |  | A developer-facing error message, which should be in English. |
-| `details` | `Array<Any>` |  | 否 |  | A list of messages that carry the error details.  There is a common set of message types for APIs to use. |
+| `code` | `string` | `ErrorCode` | N |  | The error code |
+| `message` | `string` |  | N |  | A developer-facing error message, which should be in English. Anyuser-facing error message should be localized and sent in the[google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client. |
+| `details` | `Array<mojo.core.Any>` |  | N |  | A list of messages that carry the error details.  There is a common set ofmessage types for APIs to use. |
