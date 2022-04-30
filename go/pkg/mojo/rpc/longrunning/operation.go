@@ -13,9 +13,13 @@ func (x *Operation) SetError(err *core.Error) *Operation {
     return x
 }
 
-func (x *Operation) SetValue(any *core.Any) *Operation {
+func (x *Operation) SetValue(any interface{}) *Operation {
     if x != nil {
-        x.Response = any
+        x.Response = core.NewAny(any)
     }
     return x
+}
+
+func (x *Operation) SetResponse(any interface{}) *Operation {
+    return x.SetValue(any)
 }

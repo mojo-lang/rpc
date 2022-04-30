@@ -18,13 +18,15 @@
 package longrunning
 
 import (
-	jsoniter "github.com/json-iterator/go"
 	"unsafe"
+
+	jsoniter "github.com/json-iterator/go"
+	"github.com/mojo-lang/core/go/pkg/mojo/core"
 )
 
 func init() {
-	jsoniter.RegisterTypeDecoder("longrunning.ListOperationsResponse", &ListOperationsResponseCodec{})
-	jsoniter.RegisterTypeEncoder("longrunning.ListOperationsResponse", &ListOperationsResponseCodec{})
+	core.RegisterJSONTypeDecoder("longrunning.ListOperationsResponse", &ListOperationsResponseCodec{})
+	core.RegisterJSONTypeEncoder("longrunning.ListOperationsResponse", &ListOperationsResponseCodec{})
 }
 
 type ListOperationsResponseCodec struct {

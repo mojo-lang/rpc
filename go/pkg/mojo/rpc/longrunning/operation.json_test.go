@@ -9,10 +9,10 @@ import (
     "github.com/stretchr/testify/assert"
 )
 
-const operationMetadata = `{"name":"uuid","metadata":{"@type":"mojo.core.Checksum","value":"SHA256 a591a6d40bf420404a011733cfb7b190d62c65bf0bcda32b57b277d9ad9f146e"}}`
+const operationMetadata = `{"name":"130f36bf-547f-4994-b33c-fd7fb289701f","metadata":{"@type":"mojo.core.Checksum","value":"SHA256 a591a6d40bf420404a011733cfb7b190d62c65bf0bcda32b57b277d9ad9f146e"}}`
 
 const operationError = `{
-    "name": "uuid",
+    "name": "130f36bf-547f-4994-b33c-fd7fb289701f",
     "done": true,
     "metadata": {
         "@type": "mojo.core.Checksum",
@@ -25,7 +25,7 @@ const operationError = `{
 }`
 
 const operationValue = `{
-    "name": "uuid",
+    "name": "130f36bf-547f-4994-b33c-fd7fb289701f",
     "done": true,
     "metadata": {
         "@type": "mojo.core.Checksum",
@@ -41,7 +41,7 @@ func TestOperationCodec_Decode(t *testing.T) {
     operation := &Operation{}
     jsoniter.ConfigFastest.Unmarshal([]byte(operationMetadata), operation)
 
-    assert.Equal(t, "uuid", operation.Name)
+    assert.Equal(t, "130f36bf-547f-4994-b33c-fd7fb289701f", operation.Name)
     assert.Equal(t, core.Checksum_ALGORITHM_SHA256, operation.Metadata.Get().(*core.Checksum).Algorithm)
 }
 
@@ -49,7 +49,7 @@ func TestOperationCodec_Decode_Error(t *testing.T) {
     operation := &Operation{}
     jsoniter.ConfigFastest.Unmarshal([]byte(operationError), operation)
 
-    assert.Equal(t, "uuid", operation.Name)
+    assert.Equal(t, "130f36bf-547f-4994-b33c-fd7fb289701f", operation.Name)
     assert.Equal(t, core.Checksum_ALGORITHM_SHA256, operation.Metadata.Get().(*core.Checksum).Algorithm)
 }
 
@@ -57,13 +57,13 @@ func TestOperationCodec_Decode_Value(t *testing.T) {
     operation := &Operation{}
     jsoniter.ConfigFastest.Unmarshal([]byte(operationValue), operation)
 
-    assert.Equal(t, "uuid", operation.Name)
+    assert.Equal(t, "130f36bf-547f-4994-b33c-fd7fb289701f", operation.Name)
     assert.Equal(t, core.Checksum_ALGORITHM_SHA256, operation.Metadata.Get().(*core.Checksum).Algorithm)
 }
 
 func TestOperationCodec_Encode(t *testing.T) {
     operation := &Operation{
-        Name:     "uuid",
+        Name:     "130f36bf-547f-4994-b33c-fd7fb289701f",
         Metadata: core.NewAny(core.NewChecksum(core.Checksum_ALGORITHM_SHA256, []byte("Hello World"))),
         Done:     false,
     }
