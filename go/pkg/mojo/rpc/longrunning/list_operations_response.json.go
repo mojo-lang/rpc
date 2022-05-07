@@ -47,13 +47,5 @@ func (codec *ListOperationsResponseCodec) IsEmpty(ptr unsafe.Pointer) bool {
 
 func (codec *ListOperationsResponseCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 	listOperationsResponse := (*ListOperationsResponse)(ptr)
-
-	stream.WriteArrayStart()
-	for i, v := range listOperationsResponse.Operations {
-		if i > 0 {
-			stream.WriteMore()
-		}
-		stream.WriteVal(v)
-	}
-	stream.WriteArrayEnd()
+	stream.WriteVal(listOperationsResponse.Operations)
 }

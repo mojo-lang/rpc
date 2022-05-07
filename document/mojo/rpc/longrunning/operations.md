@@ -81,6 +81,7 @@ GET /operation/v1/{{service}}/operations
 | `done` | `boolean` |  | N |  | If the value is `false`, it means the operation is still in progress.If `true`, the operation is completed, and either `error` or `response` isavailable. |
 | `error` | `mojo.core.Error` |  | N |  | The operation result, which can be either an `error` or a valid `response`.If `done` == `false`, neither `error` nor `response` is set.If `done` == `true`, exactly one of `error` or `response` is set.The error result of the operation in case of failure or cancellation. |
 | `response` | `mojo.core.Any` |  | N |  | The normal response of the operation in case of success.  If the originalmethod returns no data on success, such as `Delete`, the response is`google.protobuf.Empty`.  If the original method is standard`Get`/`Create`/`Update`, the response should be the resource.  For othermethods, the response should have the type `XxxResponse`, where `Xxx`is the original method name.  For example, if the original method nameis `TakeSnapshot()`, the inferred response type is`TakeSnapshotResponse`. |
+| `createTime` | `string` | `Timestamp` | N |  | the create timestamp for the operation created. |
 | `updateTime` | `string` | `Timestamp` | N |  | the updated timestamp for the operation when update the progression information. |
 
 
@@ -110,6 +111,7 @@ GET /operation/v1/{{service}}/operations/{name}
 | `done` | `boolean` |  | N |  | If the value is `false`, it means the operation is still in progress.If `true`, the operation is completed, and either `error` or `response` isavailable. |
 | `error` | `mojo.core.Error` |  | N |  | The operation result, which can be either an `error` or a valid `response`.If `done` == `false`, neither `error` nor `response` is set.If `done` == `true`, exactly one of `error` or `response` is set.The error result of the operation in case of failure or cancellation. |
 | `response` | `mojo.core.Any` |  | N |  | The normal response of the operation in case of success.  If the originalmethod returns no data on success, such as `Delete`, the response is`google.protobuf.Empty`.  If the original method is standard`Get`/`Create`/`Update`, the response should be the resource.  For othermethods, the response should have the type `XxxResponse`, where `Xxx`is the original method name.  For example, if the original method nameis `TakeSnapshot()`, the inferred response type is`TakeSnapshotResponse`. |
+| `createTime` | `string` | `Timestamp` | N |  | the create timestamp for the operation created. |
 | `updateTime` | `string` | `Timestamp` | N |  | the updated timestamp for the operation when update the progression information. |
 
 
@@ -203,6 +205,7 @@ If RPC context deadline is also specified, the shorter one will be used. |
 | `done` | `boolean` |  | N |  | If the value is `false`, it means the operation is still in progress.If `true`, the operation is completed, and either `error` or `response` isavailable. |
 | `error` | `mojo.core.Error` |  | N |  | The operation result, which can be either an `error` or a valid `response`.If `done` == `false`, neither `error` nor `response` is set.If `done` == `true`, exactly one of `error` or `response` is set.The error result of the operation in case of failure or cancellation. |
 | `response` | `mojo.core.Any` |  | N |  | The normal response of the operation in case of success.  If the originalmethod returns no data on success, such as `Delete`, the response is`google.protobuf.Empty`.  If the original method is standard`Get`/`Create`/`Update`, the response should be the resource.  For othermethods, the response should have the type `XxxResponse`, where `Xxx`is the original method name.  For example, if the original method nameis `TakeSnapshot()`, the inferred response type is`TakeSnapshotResponse`. |
+| `createTime` | `string` | `Timestamp` | N |  | the create timestamp for the operation created. |
 | `updateTime` | `string` | `Timestamp` | N |  | the updated timestamp for the operation when update the progression information. |
 
 

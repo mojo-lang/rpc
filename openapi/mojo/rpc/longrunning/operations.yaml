@@ -440,6 +440,8 @@ components:
         This resource represents a long-running operation that is the result of a
         network API call.
       properties:
+        createTime:
+          $ref: '#/components/schemas/mojo.core.Timestamp'
         done:
           description: |-
             If the value is `false`, it means the operation is still in progress.
