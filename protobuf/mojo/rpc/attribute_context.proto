@@ -14,7 +14,6 @@ option java_outer_classname = "AttributeContextProto";
 option java_package = "org.mojo-lang.mojo.rpc";
 
 message AttributeContext {
-    
     message Peer {
         string ip = 1;
         int64 port = 2;
@@ -22,14 +21,14 @@ message AttributeContext {
         string principal = 7;
         string region_code = 8;
     }
-    
+
     message Api {
         string service = 1;
         string operation = 2;
         string protocol = 3;
         string version = 4;
     }
-    
+
     message Auth {
         string principal = 1;
         repeated string audiences = 2;
@@ -37,7 +36,7 @@ message AttributeContext {
         mojo.core.Object claims = 4;
         repeated string access_levels = 5;
     }
-    
+
     message Request {
         string id = 1;
         string method = 2;
@@ -52,7 +51,7 @@ message AttributeContext {
         string reason = 12;
         AttributeContext.Auth auth = 13;
     }
-    
+
     message Response {
         int64 code = 1;
         int64 size = 2;
@@ -60,7 +59,7 @@ message AttributeContext {
         mojo.core.Timestamp time = 4;
         mojo.core.Duration backend_latency = 5;
     }
-    
+
     message Resource {
         string service = 1;
         string name = 2;
@@ -75,6 +74,7 @@ message AttributeContext {
         string etag = 11;
         string location = 12;
     }
+
     Peer origin = 7;
     Peer source = 1;
     Peer destination = 2;

@@ -1,1 +1,4 @@
-{"title":"mojo.rpc.Message","type":"object"}
+{
+    "title": "mojo.rpc.Message",
+    "type": "object"
+}
