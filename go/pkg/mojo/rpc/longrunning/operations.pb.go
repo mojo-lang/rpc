@@ -45,7 +45,7 @@ func (x *ListOperationsRequest) Reset() {
 	}
 }
 
-func (x *ListOperationsRequest) String() string {
+func (x *ListOperationsRequest) ToText() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
@@ -122,7 +122,7 @@ func (x *ListOperationsResponse) Reset() {
 	}
 }
 
-func (x *ListOperationsResponse) String() string {
+func (x *ListOperationsResponse) ToText() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
@@ -183,7 +183,7 @@ func (x *GetOperationRequest) Reset() {
 	}
 }
 
-func (x *GetOperationRequest) String() string {
+func (x *GetOperationRequest) ToText() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
@@ -230,7 +230,7 @@ func (x *DeleteOperationRequest) Reset() {
 	}
 }
 
-func (x *DeleteOperationRequest) String() string {
+func (x *DeleteOperationRequest) ToText() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
@@ -277,7 +277,7 @@ func (x *CancelOperationRequest) Reset() {
 	}
 }
 
-func (x *CancelOperationRequest) String() string {
+func (x *CancelOperationRequest) ToText() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
@@ -325,7 +325,7 @@ func (x *WaitOperationRequest) Reset() {
 	}
 }
 
-func (x *WaitOperationRequest) String() string {
+func (x *WaitOperationRequest) ToText() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
