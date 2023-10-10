@@ -47,7 +47,7 @@ func (x *AttributeContext) Reset() {
 	}
 }
 
-func (x *AttributeContext) ToText() string {
+func (x *AttributeContext) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
@@ -147,7 +147,7 @@ func (x *AttributeContext_Peer) Reset() {
 	}
 }
 
-func (x *AttributeContext_Peer) ToText() string {
+func (x *AttributeContext_Peer) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
@@ -225,7 +225,7 @@ func (x *AttributeContext_Api) Reset() {
 	}
 }
 
-func (x *AttributeContext_Api) ToText() string {
+func (x *AttributeContext_Api) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
@@ -297,7 +297,7 @@ func (x *AttributeContext_Auth) Reset() {
 	}
 }
 
-func (x *AttributeContext_Auth) ToText() string {
+func (x *AttributeContext_Auth) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
@@ -383,7 +383,7 @@ func (x *AttributeContext_Request) Reset() {
 	}
 }
 
-func (x *AttributeContext_Request) ToText() string {
+func (x *AttributeContext_Request) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
@@ -511,7 +511,7 @@ func (x *AttributeContext_Response) Reset() {
 	}
 }
 
-func (x *AttributeContext_Response) ToText() string {
+func (x *AttributeContext_Response) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
@@ -597,7 +597,7 @@ func (x *AttributeContext_Resource) Reset() {
 	}
 }
 
-func (x *AttributeContext_Resource) ToText() string {
+func (x *AttributeContext_Resource) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
